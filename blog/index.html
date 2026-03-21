@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | 52 Build</title>
+  <meta name="description" content="Insights on construction, values, and what it means to build right. From the team at 52 Build.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .blog-hero { padding-top: calc(var(--nav-height) + 60px); padding-bottom: 40px; }
+    .blog-hero .section-label { color: var(--copper); font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .blog-hero h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 52px); font-weight: 400; line-height: 1.15; margin-bottom: 16px; }
+    .blog-hero h1 em { font-style: italic; color: var(--gold); }
+    .blog-hero p { font-size: 17px; color: var(--gray-300); max-width: 560px; }
+
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; padding-bottom: 80px; }
+    .blog-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 8px; overflow: hidden; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+    .blog-card:hover { transform: translateY(-3px); border-color: var(--gray-500); }
+    .blog-card-img { width: 100%; height: 200px; object-fit: cover; }
+    .blog-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+    .blog-card-category { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+    .blog-card-category.individual { color: var(--copper); }
+    .blog-card-category.team { color: var(--teal-light); }
+    .blog-card-category.leadership { color: var(--gold); }
+    .blog-card h2 { font-family: var(--font-display); font-size: 22px; font-weight: 400; margin-bottom: 10px; line-height: 1.3; }
+    .blog-card p { font-size: 14px; color: var(--gray-300); line-height: 1.7; flex: 1; }
+    .blog-card-date { font-size: 12px; color: var(--gray-500); margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--dark-border); }
+    .blog-card-placeholder { display: flex; align-items: center; justify-content: center; height: 200px; background: var(--dark-surface); color: var(--gray-500); font-size: 13px; font-style: italic; }
+
+    @media (max-width: 768px) {
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="container">
+      <a href="../index.html" class="nav-logo">
+        <span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../how-we-work.html">How We Work</a></li>
+        <li><a href="../our-values.html">Our Values</a></li>
+        <li><a href="../gallery.html">Gallery</a></li>
+        <li><a href="index.html" class="active">Blog</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+      <a href="https://app.52-build.com" class="nav-cta" target="_blank">Open App</a>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="blog-hero">
+    <div class="container">
+      <div class="section-label">Blog</div>
+      <h1>Built on <em>values.</em></h1>
+      <p>Insights on construction, leadership, and what it means to build right. Real stories from the job site, grounded in the I'D HIRE ME framework.</p>
+    </div>
+  </section>
+
+  <!-- BLOG GRID -->
+  <section>
+    <div class="container">
+      <div class="blog-grid">
+
+        <!-- Initiative -->
+        <a href="initiative-on-the-jobsite.html" class="blog-card">
+          <img src="../img/slides/Slide1.JPG" alt="Initiative" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category individual">Individual Success</div>
+            <h2>Initiative on the Job Site</h2>
+            <p>The drive to take action without being asked. How proactive, self-starting behavior separates good crews from great ones — and why it matters for your project.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+        <!-- Discipline -->
+        <a href="discipline-builds-freedom.html" class="blog-card">
+          <img src="../img/slides/Slide2.JPG" alt="Discipline" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category individual">Individual Success</div>
+            <h2>Discipline Builds Freedom</h2>
+            <p>The ability to train oneself to do something in a controlled way. In construction, discipline is the difference between a project that finishes on time and one that drags on for months.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+        <!-- Humility -->
+        <a href="humility-strength-under-control.html" class="blog-card">
+          <img src="../img/slides/Slide3.JPG" alt="Humility" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category team">Team Success</div>
+            <h2>Humility: Strength Under Control</h2>
+            <p>Put the team's needs ahead of your own. Listen. Be grateful. Look for ways to serve. How exercising strength under control makes every project better.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+        <!-- Integrity -->
+        <a href="integrity-promise-keeper.html" class="blog-card">
+          <img src="../img/slides/Slide4.JPG" alt="Integrity" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category team">Team Success</div>
+            <h2>Integrity: Being a Promise Keeper</h2>
+            <p>The decision to do the right thing when no one is looking. Honesty. Transparency. Why being a promise keeper in word and deed is non-negotiable in construction.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+        <!-- Resilience -->
+        <a href="resilience-refined-through-fire.html" class="blog-card">
+          <img src="../img/slides/Slide5.JPG" alt="Resilience" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category team">Team Success</div>
+            <h2>Resilience: Refined Through Fire</h2>
+            <p>The ability to withstand difficulty and stay on mission. Every build hits a wall. The crews that recover from setbacks are the ones that deliver exceptional work.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+        <!-- Empathy -->
+        <a href="empathy-bear-each-others-burdens.html" class="blog-card">
+          <img src="../img/slides/Slide6.JPG" alt="Empathy" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category team">Team Success</div>
+            <h2>Empathy: Bear Each Other's Burdens</h2>
+            <p>Understanding and sharing the feelings of another. On a job site, empathy means being curious, present, and willing to step into someone else's shoes.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+        <!-- Mission -->
+        <a href="mission-discipline-sustains.html" class="blog-card">
+          <img src="../img/slides/Slide7.JPG" alt="Mission" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category leadership">Leadership Effectiveness</div>
+            <h2>Mission: Discipline Sustains When Inspiration Won't</h2>
+            <p>The ability to clearly articulate a strategic path. Vision. Knowing that discipline sustains when inspiration fades — and how that shapes how we lead every project.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+        <!-- Encouragement -->
+        <a href="encouragement-reassurance-advice-hope.html" class="blog-card">
+          <img src="../img/slides/Slide8_2.jpg" alt="Encouragement" class="blog-card-img">
+          <div class="blog-card-body">
+            <div class="blog-card-category leadership">Leadership Effectiveness</div>
+            <h2>Encouragement: Reassurance, Advice, and Hope</h2>
+            <p>The practice of giving support to others. Developing those around you intentionally and in a positive direction. How encouragement transforms a construction team.</p>
+            <div class="blog-card-date">Coming Soon</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../index.html" class="nav-logo">
+            <span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span>
+          </a>
+          <p class="footer-tagline">Renovations, additions, and new builds with clear communication and dependable delivery. Serving Middle Tennessee.</p>
+        </div>
+        <div class="footer-nav">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../how-we-work.html">How We Work</a></li>
+            <li><a href="../our-values.html">Our Values</a></li>
+            <li><a href="../gallery.html">Gallery</a></li>
+            <li><a href="index.html">Blog</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:6152788657">615.278.8657</a></li>
+            <li><a href="mailto:contact@52-build.com">contact@52-build.com</a></li>
+            <li><a href="https://app.52-build.com" target="_blank">52 Build App</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 52 Build. All rights reserved.</p>
+        <p>General Contractor · Serving Middle Tennessee</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/16152788657" target="_blank" style="position:fixed;bottom:24px;right:24px;z-index:90;background:#25D366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+</body>
+</html>
