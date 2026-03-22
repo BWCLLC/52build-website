@@ -8,65 +8,267 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* Gallery-specific styles */
-    .gallery-hero { padding-top: calc(var(--nav-height) + 60px); padding-bottom: 40px; }
-    .gallery-hero .section-label { color: var(--copper); font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
-    .gallery-hero h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 52px); font-weight: 400; line-height: 1.15; margin-bottom: 16px; }
-    .gallery-hero h1 em { font-style: italic; color: var(--gold); }
-    .gallery-hero p { font-size: 17px; color: var(--gray-300); max-width: 560px; }
-
-    .project-nav { display: flex; gap: 0; border-bottom: 1px solid var(--dark-border); margin-bottom: 48px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .project-tab { background: none; border: none; border-bottom: 2px solid transparent; padding: 14px 24px; color: var(--gray-400); font-family: var(--font-body); font-size: 14px; font-weight: 500; letter-spacing: 0.3px; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+    .gallery-hero {
+      padding-top: calc(var(--nav-height) + 60px);
+      padding-bottom: 40px;
+    }
+    .gallery-hero .section-label {
+      color: var(--copper);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .gallery-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .gallery-hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .gallery-hero p {
+      font-size: 17px;
+      color: var(--gray-300);
+      max-width: 560px;
+    }
+    .project-nav {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--dark-border);
+      margin-bottom: 48px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .project-tab {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 14px 24px;
+      color: var(--gray-400);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
     .project-tab:hover { color: var(--gray-200); }
-    .project-tab.active { color: var(--white); border-bottom-color: var(--copper); }
-    .project-tab .tab-badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 8px; border-radius: 100px; margin-left: 8px; vertical-align: middle; }
+    .project-tab.active {
+      color: var(--white);
+      border-bottom-color: var(--copper);
+    }
+    .project-tab .tab-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
     .tab-badge.completed { background: rgba(20,85,90,0.25); color: var(--teal-light); }
     .tab-badge.active-badge { background: rgba(199,101,46,0.25); color: var(--copper-light); }
     .tab-badge.soon { background: rgba(196,165,90,0.15); color: var(--gold); }
-
     .project-panel { display: none; }
-    .project-panel.active { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-
-    .project-header { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 48px; }
-    .project-poster { width: 100%; border-radius: 8px; border: 1px solid var(--dark-border); }
-    .project-info h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 8px; }
-    .project-meta { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
-    .project-meta span { font-size: 13px; color: var(--gray-400); display: flex; align-items: center; gap: 6px; }
-    .project-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gray-500); }
-    .project-info p { font-size: 15px; color: var(--gray-300); line-height: 1.8; margin-bottom: 16px; }
-    .project-scope { list-style: none; padding: 0; }
-    .project-scope li { font-size: 14px; color: var(--gray-300); padding: 6px 0; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; gap: 10px; }
+    .project-panel.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .project-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+    .project-poster {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--dark-border);
+    }
+    .project-info h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .project-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .project-meta span {
+      font-size: 13px;
+      color: var(--gray-400);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .project-meta .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gray-500);
+    }
+    .project-info p {
+      font-size: 15px;
+      color: var(--gray-300);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .project-scope {
+      list-style: none;
+      padding: 0;
+    }
+    .project-scope li {
+      font-size: 14px;
+      color: var(--gray-300);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--dark-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
     .project-scope li:last-child { border-bottom: none; }
     .scope-icon { color: var(--teal-light); font-size: 14px; }
-
-    .photos-heading { font-family: var(--font-display); font-size: 20px; font-weight: 400; margin-bottom: 24px; color: var(--gray-200); }
-    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 60px; }
-    .photo-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px; border: 1px solid var(--dark-border); transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
-    .photo-grid img:hover { transform: scale(1.02); border-color: var(--gray-500); }
-
-    .photo-placeholder { background: var(--dark-card); border: 1px dashed var(--dark-border); border-radius: 6px; height: 220px; display: flex; align-items: center; justify-content: center; color: var(--gray-500); font-size: 13px; }
-
+    .photos-heading {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 24px;
+      color: var(--gray-200);
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-bottom: 60px;
+    }
+    .photo-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--dark-border);
+      transition: transform 0.2s, border-color 0.2s;
+      cursor: pointer;
+    }
+    .photo-grid img:hover {
+      transform: scale(1.02);
+      border-color: var(--gray-500);
+    }
+    .photo-placeholder {
+      background: var(--dark-card);
+      border: 1px dashed var(--dark-border);
+      border-radius: 6px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-500);
+      font-size: 13px;
+    }
     /* Placeholder states for active/coming soon */
-    .project-placeholder { text-align: center; padding: 80px 24px; }
-    .project-placeholder-icon { font-size: 48px; margin-bottom: 20px; opacity: 0.3; }
-    .project-placeholder h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
-    .project-placeholder p { font-size: 16px; color: var(--gray-400); max-width: 480px; margin: 0 auto; }
-    .placeholder-bar { width: 60px; height: 3px; background: var(--dark-border); margin: 24px auto; border-radius: 2px; }
-
+    .project-placeholder {
+      text-align: center;
+      padding: 80px 24px;
+    }
+    .project-placeholder-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      opacity: 0.3;
+    }
+    .project-placeholder h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .project-placeholder p {
+      font-size: 16px;
+      color: var(--gray-400);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .placeholder-bar {
+      width: 60px;
+      height: 3px;
+      background: var(--dark-border);
+      margin: 24px auto;
+      border-radius: 2px;
+    }
     /* Lightbox */
-    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 200; align-items: center; justify-content: center; cursor: zoom-out; }
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+    }
     .lightbox.open { display: flex; }
-    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 4px; }
-    .lightbox-close { position: absolute; top: 20px; right: 24px; color: var(--white); font-size: 28px; cursor: pointer; background: none; border: none; opacity: 0.7; transition: opacity 0.2s; }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 4px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: var(--white);
+      font-size: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
     .lightbox-close:hover { opacity: 1; }
-
     /* CTA strip */
-    .gallery-cta { background: var(--dark-surface); border-top: 1px solid var(--dark-border); padding: 60px 0; text-align: center; }
-    .gallery-cta h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
-    .gallery-cta p { color: var(--gray-300); margin-bottom: 28px; }
-    .gallery-cta .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--copper); color: var(--white-pure); padding: 14px 32px; border-radius: 6px; font-size: 15px; font-weight: 500; transition: background 0.2s; }
+    .gallery-cta {
+      background: var(--dark-surface);
+      border-top: 1px solid var(--dark-border);
+      padding: 60px 0;
+      text-align: center;
+    }
+    .gallery-cta h2 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+    .gallery-cta p {
+      color: var(--gray-300);
+      margin-bottom: 28px;
+    }
+    .gallery-cta .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--copper);
+      color: var(--white-pure);
+      padding: 14px 32px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
     .gallery-cta .btn:hover { background: var(--copper-light); }
-
     @media (max-width: 768px) {
       .project-header { grid-template-columns: 1fr; gap: 24px; }
       .project-nav { gap: 0; }
@@ -111,10 +313,13 @@
   <!-- PROJECT TABS -->
   <section style="padding-bottom: 80px;">
     <div class="container">
+
       <div class="project-nav">
         <button class="project-tab active" data-project="lewisburg">Lewisburg Barndominium <span class="tab-badge completed">Completed</span></button>
         <button class="project-tab" data-project="pegram">Pegram Restoration <span class="tab-badge completed">Completed</span></button>
         <button class="project-tab" data-project="nashville">Nashville New Builds <span class="tab-badge completed">Completed</span></button>
+        <button class="project-tab" data-project="murfreesboro">Murfreesboro Remodel <span class="tab-badge completed">Completed</span></button>
+        <button class="project-tab" data-project="donelson">Donelson Remodel <span class="tab-badge completed">Completed</span></button>
         <button class="project-tab" data-project="active">Active Project <span class="tab-badge active-badge">In Progress</span></button>
         <button class="project-tab" data-project="coming-soon">Coming Soon <span class="tab-badge soon">Upcoming</span></button>
       </div>
@@ -132,7 +337,7 @@
               <span class="dot"></span>
               <span>Liberty Valley Rd</span>
             </div>
-            <p>A custom barndominium build on Liberty Valley Road in Lewisburg, Tennessee. This project combined the open, flexible layout of barn-style construction with high-end residential finishes — vaulted wood ceilings, polished concrete floors, a chef's kitchen, and thoughtful details throughout.</p>
+            <p>A custom barndominium build on Liberty Valley Road in Lewisburg, Tennessee. This project combined the open, flexible layout of barn-style construction with high-end residential finishes &mdash; vaulted wood ceilings, polished concrete floors, a chef&rsquo;s kitchen, and thoughtful details throughout.</p>
             <ul class="project-scope">
               <li><span class="scope-icon">✓</span> Custom new construction</li>
               <li><span class="scope-icon">✓</span> Metal roof &amp; board-and-batten exterior</li>
@@ -145,7 +350,6 @@
         </div>
         <h3 class="photos-heading">Project Photos</h3>
         <div class="photo-grid" id="grid-lewisburg">
-          <!-- Photos auto-loaded from img/gallery/lewisburg-barndominium/ -->
           <div class="photo-placeholder">Upload photos to img/gallery/lewisburg-barndominium/</div>
           <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
           <div class="photo-placeholder">They'll appear here automatically</div>
@@ -165,7 +369,7 @@
               <span class="dot"></span>
               <span>Gourley Rd</span>
             </div>
-            <p>What started as an insurance restoration became a complete transformation. This whole-home remodel on Gourley Road in Pegram brought modern finishes to a classic structure — exposed beams, hardwood floors, an open white kitchen, walk-in tile shower, and every room reimagined with intention.</p>
+            <p>What started as an insurance restoration became a complete transformation. This whole-home remodel on Gourley Road in Pegram brought modern finishes to a classic structure &mdash; exposed beams, hardwood floors, an open white kitchen, walk-in tile shower, and every room reimagined with intention.</p>
             <ul class="project-scope">
               <li><span class="scope-icon">✓</span> Insurance restoration</li>
               <li><span class="scope-icon">✓</span> Whole-home remodel</li>
@@ -184,7 +388,7 @@
         </div>
       </div>
 
-      <!-- NASHVILLE NEW BUILDS -->
+      <!-- NASHVILLE NEW BUILDS (JAMES CT) -->
       <div class="project-panel" id="panel-nashville">
         <div class="project-header" style="grid-template-columns: 1fr;">
           <div class="project-info">
@@ -192,13 +396,13 @@
             <div class="project-meta">
               <span>Nashville, TN</span>
               <span class="dot"></span>
-              <span>New Construction — 2 Builds</span>
+              <span>New Construction &mdash; 2 Builds</span>
               <span class="dot"></span>
               <span>James Ct</span>
             </div>
             <p>Two new construction builds on James Court in Nashville. Each home was designed and built from the ground up with the same commitment to quality, clear communication, and attention to detail that defines every 52 Build project.</p>
             <ul class="project-scope">
-              <li><span class="scope-icon">✓</span> New construction — 2 homes</li>
+              <li><span class="scope-icon">✓</span> New construction &mdash; 2 homes</li>
               <li><span class="scope-icon">✓</span> Ground-up custom builds</li>
               <li><span class="scope-icon">✓</span> Full project management</li>
             </ul>
@@ -207,6 +411,59 @@
         <h3 class="photos-heading">Project Photos</h3>
         <div class="photo-grid" id="grid-nashville">
           <div class="photo-placeholder">Upload photos to img/gallery/nashville-new-builds/</div>
+          <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
+          <div class="photo-placeholder">They'll appear here automatically</div>
+        </div>
+      </div>
+
+      <!-- MURFREESBORO REMODEL -->
+      <div class="project-panel" id="panel-murfreesboro">
+        <div class="project-header" style="grid-template-columns: 1fr;">
+          <div class="project-info">
+            <h2>Murfreesboro Remodel</h2>
+            <div class="project-meta">
+              <span>Murfreesboro, TN</span>
+              <span class="dot"></span>
+              <span>Whole Home Remodel</span>
+            </div>
+            <p>A complete whole-home remodel in Murfreesboro, Tennessee. Updated finishes throughout including new hardwood flooring, a refreshed kitchen with modern cabinetry, renovated bathrooms, a whitewashed brick fireplace with walnut mantel, and custom closet built-ins &mdash; transforming a classic brick ranch into a move-in ready home.</p>
+            <ul class="project-scope">
+              <li><span class="scope-icon">✓</span> Whole-home remodel</li>
+              <li><span class="scope-icon">✓</span> Hardwood flooring throughout</li>
+              <li><span class="scope-icon">✓</span> Kitchen renovation with new cabinetry</li>
+              <li><span class="scope-icon">✓</span> Bathroom remodel with freestanding tub</li>
+              <li><span class="scope-icon">✓</span> Whitewashed brick fireplace</li>
+              <li><span class="scope-icon">✓</span> Custom closet built-ins</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="photos-heading">Project Photos</h3>
+        <div class="photo-grid" id="grid-murfreesboro">
+          <div class="photo-placeholder">Upload photos to img/gallery/murfreesboro-remodel/</div>
+          <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
+          <div class="photo-placeholder">They'll appear here automatically</div>
+        </div>
+      </div>
+
+      <!-- DONELSON REMODEL -->
+      <div class="project-panel" id="panel-donelson">
+        <div class="project-header" style="grid-template-columns: 1fr;">
+          <div class="project-info">
+            <h2>Donelson Remodel</h2>
+            <div class="project-meta">
+              <span>Donelson, TN</span>
+              <span class="dot"></span>
+              <span>Whole Home Remodel</span>
+            </div>
+            <p>A whole-home remodel in the Donelson area of Nashville. Details and project scope coming soon as photos are finalized.</p>
+            <ul class="project-scope">
+              <li><span class="scope-icon">✓</span> Whole-home remodel</li>
+            </ul>
+          </div>
+        </div>
+        <h3 class="photos-heading">Project Photos</h3>
+        <div class="photo-grid" id="grid-donelson">
+          <div class="photo-placeholder">Upload photos to img/gallery/donelson-remodel/</div>
           <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
           <div class="photo-placeholder">They'll appear here automatically</div>
         </div>
@@ -239,8 +496,8 @@
   <section class="gallery-cta">
     <div class="container">
       <h2>Ready to build?</h2>
-      <p>Let's talk about your project. Renovations, additions, or new construction — we're here.</p>
-      <a href="contact.html" class="btn">Start Your Project →</a>
+      <p>Let's talk about your project. Renovations, additions, or new construction &mdash; we're here.</p>
+      <a href="contact.html" class="btn">Start Your Project &rarr;</a>
     </div>
   </section>
 
@@ -270,13 +527,17 @@
           <ul>
             <li><a href="tel:6152788657">615.278.8657</a></li>
             <li><a href="mailto:contact@52-build.com">contact@52-build.com</a></li>
-            <li><a href="https://app.52-build.com" target="_blank">52 Build App</a></li></ul><div style="display:flex;gap:16px;margin-top:20px"><a href="https://www.instagram.com/52build" target="_blank" style="color:var(--gray-400);transition:color 0.2s" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray-400)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="https://www.facebook.com/profile.php?id=61586552669059" target="_blank" style="color:var(--gray-400);transition:color 0.2s" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray-400)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div>
+            <li><a href="https://app.52-build.com" target="_blank">52 Build App</a></li>
           </ul>
+          <div style="display:flex;gap:16px;margin-top:20px">
+            <a href="https://www.instagram.com/52build" target="_blank" style="color:var(--gray-400);transition:color 0.2s" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray-400)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.facebook.com/profile.php?id=61586552669059" target="_blank" style="color:var(--gray-400);transition:color 0.2s" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray-400)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
         <p>&copy; 2025 52 Build. All rights reserved.</p>
-        <p>General Contractor · Serving Middle Tennessee</p>
+        <p>General Contractor &middot; Serving Middle Tennessee</p>
       </div>
     </div>
   </footer>
