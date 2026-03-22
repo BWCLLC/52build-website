@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | 52 Build</title>
+    <meta name="description" content="Insights on home remodeling, cost planning, and choosing the right contractor. Practical advice for homeowners in Franklin, Nashville, and Middle Tennessee.">
+    <link rel="icon" href="../img/logo-square.jpg">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .blog-hero { padding-top: calc(var(--nav-height) + 60px); padding-bottom: 40px; }
+        .blog-hero .section-label { color: var(--copper); font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+        .blog-hero h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 52px); font-weight: 400; line-height: 1.15; margin-bottom: 16px; }
+        .blog-hero h1 em { font-style: italic; color: var(--gold); }
+        .blog-hero p { font-size: 17px; color: var(--gray-300); max-width: 600px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; padding-bottom: 80px; }
+        .blog-card { background: var(--dark-surface); border: 1px solid var(--dark-border); border-radius: 12px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .blog-card:hover { transform: translateY(-4px); border-color: var(--copper); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+        .blog-card-header { position: relative; padding: 32px 28px 20px; }
+        .blog-card-category { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; margin-bottom: 14px; }
+        .cat-guide { background: rgba(20,85,90,0.2); color: var(--teal-light); }
+        .cat-cost { background: rgba(196,165,90,0.2); color: var(--gold); }
+        .cat-insight { background: rgba(199,101,46,0.2); color: var(--copper-light); }
+        .cat-checklist { background: rgba(20,85,90,0.2); color: var(--teal-light); }
+        .cat-spotlight { background: rgba(196,165,90,0.15); color: var(--gold); }
+        .blog-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 400; line-height: 1.3; margin-bottom: 12px; color: var(--white); }
+        .blog-card p { font-size: 14px; color: var(--gray-400); line-height: 1.7; margin-bottom: 0; }
+        .blog-card-footer { padding: 16px 28px 24px; display: flex; justify-content: space-between; align-items: center; }
+        .blog-card-date { font-size: 12px; color: var(--gray-500); }
+        .blog-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 4px 12px; border-radius: 100px; backdrop-filter: blur(8px); }
+        .badge-soon { background: rgba(199,101,46,0.15); color: var(--copper-light); border: 1px solid rgba(199,101,46,0.3); }
+        .badge-live { background: rgba(20,85,90,0.2); color: var(--teal-light); border: 1px solid rgba(20,85,90,0.4); }
+        .blog-card-divider { height: 1px; background: var(--dark-border); margin: 0 28px; }
+        .blog-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; }
+        .blog-card.featured .blog-card-visual { background: linear-gradient(135deg, rgba(20,85,90,0.15), rgba(199,101,46,0.1)); display: flex; align-items: center; justify-content: center; padding: 40px; min-height: 280px; }
+        .blog-card.featured .blog-card-visual .visual-icon { font-size: 64px; opacity: 0.15; }
+        .blog-card.featured .blog-card-content { display: flex; flex-direction: column; justify-content: center; }
+        .blog-card.featured h3 { font-size: 26px; }
+        .blog-card.spotlight .blog-card-visual { height: 200px; background: var(--dark-card); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .blog-card.spotlight .blog-card-visual .visual-icon { font-size: 48px; opacity: 0.12; }
+        .spotlight-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7)); display: flex; align-items: flex-end; padding: 16px 20px; }
+        .spotlight-overlay span { font-size: 12px; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+        .blog-cta { background: var(--dark-surface); border-top: 1px solid var(--dark-border); padding: 60px 0; text-align: center; }
+        .blog-cta h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
+        .blog-cta p { color: var(--gray-300); margin-bottom: 28px; }
+        .blog-cta .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--copper); color: var(--white-pure); padding: 14px 32px; border-radius: 6px; font-size: 15px; font-weight: 500; transition: background 0.2s; text-decoration: none; }
+        .blog-cta .btn:hover { background: var(--copper-light); }
+        @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; gap: 16px; } .blog-card.featured { grid-template-columns: 1fr; } .blog-card.featured .blog-card-visual { min-height: 160px; } }
+    </style>
+</head>
+<body>
+<nav class="nav"><div class="container"><a href="../index.html" class="nav-logo"><span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span></a><ul class="nav-links"><li><a href="../index.html">Home</a></li><li><a href="../how-we-work.html">How We Work</a></li><li><a href="../our-values.html">Our Values</a></li><li><a href="../gallery.html">Gallery</a></li><li><a href="index.html" class="active">Blog</a></li><li><a href="../contact.html">Contact</a></li></ul><button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"><span class="toggle-dot"></span></button> <a href="https://app.52-build.com" class="nav-cta" target="_blank">Open App</a><button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button></div></nav>
+
+<section class="blog-hero"><div class="container"><div class="section-label">Blog</div><h1>Insights for <em>homeowners.</em></h1><p>Practical advice on remodeling, renovations, and what to look for in a contractor. Written for homeowners in Franklin, Nashville, and Middle Tennessee.</p></div></section>
+
+<section><div class="container"><div class="blog-grid">
+
+<!-- POST 1: Featured -->
+<a href="what-to-expect-whole-home-remodel.html" class="blog-card featured">
+<div class="blog-card-visual"><div class="visual-icon">&#x1F3E0;</div></div>
+<div class="blog-card-content">
+<div class="blog-card-header"><span class="blog-card-category cat-guide">Homeowner Guide</span><h3>What to Expect During a Whole-Home Remodel</h3><p>A walkthrough of the entire remodeling process &mdash; from the first phone call to the final walkthrough. What really happens during demo, rough-ins, and finishes, how long it takes, and how to stay sane through the process.</p></div>
+<div class="blog-card-divider"></div>
+<div class="blog-card-footer"><span class="blog-card-date">March 2026</span><span class="blog-badge badge-live">Read Now</span></div>
+</div></a>
+
+<!-- POST 2 -->
+<a href="kitchen-remodel-cost-guide-franklin-nashville.html" class="blog-card">
+<div class="blog-card-header"><span class="blog-card-category cat-cost">Cost Planning</span><h3>Kitchen Remodel Cost Guide: What Franklin &amp; Nashville Homeowners Should Know</h3><p>Realistic budget ranges for different levels of kitchen remodel, what drives costs up (and what doesn&rsquo;t), and how to get a transparent estimate you can actually trust.</p></div>
+<div class="blog-card-divider"></div>
+<div class="blog-card-footer"><span class="blog-card-date">March 2026</span><span class="blog-badge badge-live">Read Now</span></div></a>
+
+<!-- POST 3 -->
+<a href="why-transparency-matters-more-than-lowest-bid.html" class="blog-card">
+<div class="blog-card-header"><span class="blog-card-category cat-insight">Industry Insight</span><h3>Why Transparency Matters More Than the Lowest Bid</h3><p>The hidden cost of choosing the cheapest quote. What happens when a bid is too low, why change orders pile up, and how a detailed line-item estimate protects both you and the project.</p></div>
+<div class="blog-card-divider"></div>
+<div class="blog-card-footer"><span class="blog-card-date">March 2026</span><span class="blog-badge badge-live">Read Now</span></div></a>
+
+<!-- POST 4 -->
+<a href="how-to-choose-general-contractor-tennessee.html" class="blog-card">
+<div class="blog-card-header"><span class="blog-card-category cat-checklist">Checklist</span><h3>How to Choose a General Contractor in Tennessee</h3><p>What to look for in estimates, the questions most homeowners forget to ask, licensing requirements in Tennessee, and the red flags that separate reliable contractors from the rest.</p></div>
+<div class="blog-card-divider"></div>
+<div class="blog-card-footer"><span class="blog-card-date">March 2026</span><span class="blog-badge badge-live">Read Now</span></div></a>
+
+<!-- POST 5: Pegram Restoration -->
+<div class="blog-card spotlight" style="cursor:default;">
+<div class="blog-card-visual"><div class="visual-icon">&#x1F3D7;</div><div class="spotlight-overlay"><span>Project Spotlight</span></div></div>
+<div class="blog-card-header"><span class="blog-card-category cat-spotlight">Before &amp; After</span><h3>From Insurance Claim to Complete Transformation: A Pegram Restoration</h3><p>How an insurance job became the opportunity to completely change the layout and upgrade everything &mdash; a full restoration that turned a setback into something better than the original.</p></div>
+<div class="blog-card-divider"></div>
+<div class="blog-card-footer"><span class="blog-card-date">Coming Soon</span><span class="blog-badge badge-soon">Publishing Soon</span></div></div>
+
+</div></div></section>
+
+<section class="blog-cta"><div class="container"><h2>Have a question about your project?</h2><p>We&rsquo;re happy to talk through your remodel, addition, or renovation &mdash; no pressure, no commitment.</p><a href="../contact.html" class="btn">Get in Touch &rarr;</a></div></section>
+
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="../index.html" class="nav-logo"><span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span></a><p class="footer-tagline">Renovations, additions, and new builds with clear communication and dependable delivery. Serving Middle Tennessee.</p></div><div class="footer-nav"><h5>Navigation</h5><ul><li><a href="../index.html">Home</a></li><li><a href="../how-we-work.html">How We Work</a></li><li><a href="../our-values.html">Our Values</a></li><li><a href="../gallery.html">Gallery</a></li><li><a href="index.html">Blog</a></li><li><a href="../contact.html">Contact</a></li></ul></div><div class="footer-contact"><h5>Contact</h5><ul><li><a href="tel:6152788657">615.278.8657</a></li><li><a href="mailto:contact@52-build.com">contact@52-build.com</a></li><li><a href="https://app.52-build.com" target="_blank">52 Build App</a></li></ul><div style="display:flex;gap:16px;margin-top:20px"><a href="https://www.instagram.com/52build" target="_blank" style="color:var(--gray-400);transition:color 0.2s" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray-400)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="https://www.facebook.com/profile.php?id=61586552669059" target="_blank" style="color:var(--gray-400);transition:color 0.2s" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--gray-400)'"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a></div></div></div><div class="footer-bottom"><p>&copy; 2025 52 Build. All rights reserved.</p><p>General Contractor &middot; Serving Middle Tennessee</p></div></div></footer>
+
+<script src="../js/main.js"></script>
+<a href="https://wa.me/16152788657" target="_blank" style="position:fixed;bottom:24px;right:24px;z-index:90;background:#25D366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+</body>
+</html>
