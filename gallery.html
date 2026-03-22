@@ -7,285 +7,99 @@
   <meta name="description" content="See our completed projects across Middle Tennessee. Custom builds, renovations, and restorations done right.">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Gallery-specific styles */
-    .gallery-hero {
-      padding-top: calc(var(--nav-height) + 60px);
-      padding-bottom: 40px;
-    }
-    .gallery-hero .section-label {
-      color: var(--copper);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .gallery-hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 52px);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    .gallery-hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .gallery-hero p {
-      font-size: 17px;
-      color: var(--gray-300);
-      max-width: 560px;
-    }
-    .project-nav {
-      display: flex;
-      gap: 0;
-      border-bottom: 1px solid var(--dark-border);
-      margin-bottom: 48px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .project-tab {
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      padding: 14px 24px;
-      color: var(--gray-400);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .project-tab:hover { color: var(--gray-200); }
-    .project-tab.active {
-      color: var(--white);
-      border-bottom-color: var(--copper);
-    }
-    .project-tab .tab-badge {
-      display: inline-block;
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      padding: 2px 8px;
-      border-radius: 100px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-    .tab-badge.completed { background: rgba(20,85,90,0.25); color: var(--teal-light); }
-    .tab-badge.active-badge { background: rgba(199,101,46,0.25); color: var(--copper-light); }
-    .tab-badge.soon { background: rgba(196,165,90,0.15); color: var(--gold); }
-    .project-panel { display: none; }
-    .project-panel.active {
-      display: block;
-      animation: fadeIn 0.3s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .project-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: start;
-      margin-bottom: 48px;
-    }
-    .project-poster {
-      width: 100%;
-      border-radius: 8px;
-      border: 1px solid var(--dark-border);
-    }
-    .project-info h2 {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 8px;
-    }
-    .project-meta {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 20px;
-      flex-wrap: wrap;
-    }
-    .project-meta span {
-      font-size: 13px;
-      color: var(--gray-400);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .project-meta .dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--gray-500);
-    }
-    .project-info p {
-      font-size: 15px;
-      color: var(--gray-300);
-      line-height: 1.8;
-      margin-bottom: 16px;
-    }
-    .project-scope {
-      list-style: none;
-      padding: 0;
-    }
-    .project-scope li {
-      font-size: 14px;
-      color: var(--gray-300);
-      padding: 6px 0;
-      border-bottom: 1px solid var(--dark-border);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .gallery-hero { padding-top: calc(var(--nav-height) + 60px); padding-bottom: 40px; }
+    .gallery-hero .section-label { color: var(--copper); font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .gallery-hero h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 52px); font-weight: 400; line-height: 1.15; margin-bottom: 16px; }
+    .gallery-hero h1 em { font-style: italic; color: var(--gold); }
+    .gallery-hero p { font-size: 17px; color: var(--gray-300); max-width: 560px; }
+
+    /* ── Postcard Wall ── */
+    .postcard-wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-bottom: 48px; }
+    .postcard-wall.hidden { display: none; }
+    .postcard-card { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 3/2; border: 2px solid transparent; transition: all 0.25s ease; }
+    .postcard-card:hover { transform: translateY(-4px); border-color: var(--copper); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .postcard-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .postcard-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 16px 14px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); pointer-events: none; }
+    .postcard-overlay .po-title { font-family: var(--font-display); font-size: 17px; color: #fff; margin-bottom: 2px; }
+    .postcard-overlay .po-meta { font-size: 11px; color: rgba(255,255,255,0.7); }
+    .postcard-placeholder { width: 100%; height: 100%; background: var(--dark-surface); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+    .postcard-placeholder .pp-brand { font-family: var(--font-body); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .postcard-placeholder .pp-title { font-family: var(--font-display); font-size: 20px; color: var(--white); margin-bottom: 6px; }
+    .postcard-placeholder .pp-meta { font-size: 12px; color: var(--gray-400); }
+    .postcard-card.postcard-dashed { border: 2px dashed var(--dark-border); background: var(--dark-surface); }
+    .postcard-card.postcard-dashed:hover { border-color: var(--gray-500); transform: translateY(-2px); box-shadow: none; }
+    .postcard-dashed-inner { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px; }
+    .postcard-dashed-inner .pd-icon { font-size: 32px; margin-bottom: 10px; opacity: 0.3; }
+    .postcard-dashed-inner .pd-title { font-size: 15px; font-weight: 500; color: var(--gray-300); margin-bottom: 4px; }
+    .postcard-dashed-inner .pd-sub { font-size: 12px; color: var(--gray-500); }
+    .postcard-badge { position: absolute; bottom: 10px; right: 12px; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 100px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .postcard-badge.completed { background: rgba(20,85,90,0.7); color: #9FE1CB; }
+    .postcard-badge.active-badge { background: rgba(199,101,46,0.7); color: #F5C4B3; }
+    .postcard-badge.soon { background: rgba(196,165,90,0.5); color: #C4A55A; }
+
+    /* ── Project Detail ── */
+    .project-detail { display: none; animation: fadeIn 0.3s ease; }
+    .project-detail.open { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .back-to-projects { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--gray-400); cursor: pointer; margin-bottom: 32px; transition: color 0.2s; background: none; border: none; font-family: var(--font-body); padding: 0; }
+    .back-to-projects:hover { color: var(--white); }
+    .project-header { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 48px; }
+    .project-header.single-col { grid-template-columns: 1fr; }
+    .project-poster { width: 100%; border-radius: 8px; border: 1px solid var(--dark-border); }
+    .project-info h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 8px; }
+    .project-meta { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+    .project-meta span { font-size: 13px; color: var(--gray-400); display: flex; align-items: center; gap: 6px; }
+    .project-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gray-500); }
+    .project-info p { font-size: 15px; color: var(--gray-300); line-height: 1.8; margin-bottom: 16px; }
+    .project-scope { list-style: none; padding: 0; }
+    .project-scope li { font-size: 14px; color: var(--gray-300); padding: 6px 0; border-bottom: 1px solid var(--dark-border); display: flex; align-items: center; gap: 10px; }
     .project-scope li:last-child { border-bottom: none; }
     .scope-icon { color: var(--teal-light); font-size: 14px; }
-    .photos-heading {
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 24px;
-      color: var(--gray-200);
-    }
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 12px;
-      margin-bottom: 60px;
-    }
-    .photo-grid img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid var(--dark-border);
-      transition: transform 0.2s, border-color 0.2s;
-      cursor: pointer;
-    }
-    .photo-grid img:hover {
-      transform: scale(1.02);
-      border-color: var(--gray-500);
-    }
-    .photo-placeholder {
-      background: var(--dark-card);
-      border: 1px dashed var(--dark-border);
-      border-radius: 6px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gray-500);
-      font-size: 13px;
-    }
-    /* Placeholder states for active/coming soon */
-    .project-placeholder {
-      text-align: center;
-      padding: 80px 24px;
-    }
-    .project-placeholder-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
-      opacity: 0.3;
-    }
-    .project-placeholder h2 {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 12px;
-    }
-    .project-placeholder p {
-      font-size: 16px;
-      color: var(--gray-400);
-      max-width: 480px;
-      margin: 0 auto;
-    }
-    .placeholder-bar {
-      width: 60px;
-      height: 3px;
-      background: var(--dark-border);
-      margin: 24px auto;
-      border-radius: 2px;
-    }
+    .photos-heading { font-family: var(--font-display); font-size: 20px; font-weight: 400; margin-bottom: 24px; color: var(--gray-200); }
+    .photo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 60px; }
+    .photo-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 6px; border: 1px solid var(--dark-border); transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
+    .photo-grid img:hover { transform: scale(1.02); border-color: var(--gray-500); }
+    .photo-placeholder { background: var(--dark-card); border: 1px dashed var(--dark-border); border-radius: 6px; height: 220px; display: flex; align-items: center; justify-content: center; color: var(--gray-500); font-size: 13px; }
+    .project-placeholder { text-align: center; padding: 80px 24px; }
+    .project-placeholder-icon { font-size: 48px; margin-bottom: 20px; opacity: 0.3; }
+    .project-placeholder h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
+    .project-placeholder p { font-size: 16px; color: var(--gray-400); max-width: 480px; margin: 0 auto; }
+    .placeholder-bar { width: 60px; height: 3px; background: var(--dark-border); margin: 24px auto; border-radius: 2px; }
+
     /* Lightbox */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
-      cursor: zoom-out;
-    }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 200; align-items: center; justify-content: center; cursor: zoom-out; }
     .lightbox.open { display: flex; }
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 4px;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      color: var(--white);
-      font-size: 28px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      opacity: 0.7;
-      transition: opacity 0.2s;
-    }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 4px; }
+    .lightbox-close { position: absolute; top: 20px; right: 24px; color: var(--white); font-size: 28px; cursor: pointer; background: none; border: none; opacity: 0.7; transition: opacity 0.2s; }
     .lightbox-close:hover { opacity: 1; }
-    /* CTA strip */
-    .gallery-cta {
-      background: var(--dark-surface);
-      border-top: 1px solid var(--dark-border);
-      padding: 60px 0;
-      text-align: center;
-    }
-    .gallery-cta h2 {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 400;
-      margin-bottom: 12px;
-    }
-    .gallery-cta p {
-      color: var(--gray-300);
-      margin-bottom: 28px;
-    }
-    .gallery-cta .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--copper);
-      color: var(--white-pure);
-      padding: 14px 32px;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: background 0.2s;
-    }
+    .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 28px; padding: 12px 16px; cursor: pointer; border-radius: 6px; transition: background 0.2s; }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-prev { left: 20px; }
+    .lightbox-next { right: 20px; }
+
+    /* CTA */
+    .gallery-cta { background: var(--dark-surface); border-top: 1px solid var(--dark-border); padding: 60px 0; text-align: center; }
+    .gallery-cta h2 { font-family: var(--font-display); font-size: 28px; font-weight: 400; margin-bottom: 12px; }
+    .gallery-cta p { color: var(--gray-300); margin-bottom: 28px; }
+    .gallery-cta .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--copper); color: var(--white-pure); padding: 14px 32px; border-radius: 6px; font-size: 15px; font-weight: 500; transition: background 0.2s; }
     .gallery-cta .btn:hover { background: var(--copper-light); }
+
     @media (max-width: 768px) {
+      .postcard-wall { grid-template-columns: 1fr; gap: 12px; }
       .project-header { grid-template-columns: 1fr; gap: 24px; }
-      .project-nav { gap: 0; }
-      .project-tab { padding: 12px 16px; font-size: 13px; }
       .photo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
       .photo-grid img { height: 160px; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .postcard-wall { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav">
     <div class="container">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span>
-      </a>
+      <a href="index.html" class="nav-logo"><span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span></a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="how-we-work.html">How We Work</a></li>
@@ -295,13 +109,10 @@
         <li><a href="contact.html">Contact</a></li>
       </ul>
       <a href="https://app.52-build.com" class="nav-cta" target="_blank">Open App</a>
-      <button class="nav-toggle" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="gallery-hero">
     <div class="container">
       <div class="section-label">Our Work</div>
@@ -310,205 +121,60 @@
     </div>
   </section>
 
-  <!-- PROJECT TABS -->
   <section style="padding-bottom: 80px;">
     <div class="container">
 
-      <div class="project-nav">
-        <button class="project-tab active" data-project="lewisburg">Lewisburg Barndominium <span class="tab-badge completed">Completed</span></button>
-        <button class="project-tab" data-project="pegram">Pegram Restoration <span class="tab-badge completed">Completed</span></button>
-        <button class="project-tab" data-project="nashville">Nashville New Builds <span class="tab-badge completed">Completed</span></button>
-        <button class="project-tab" data-project="murfreesboro">Murfreesboro Remodel <span class="tab-badge completed">Completed</span></button>
-        <button class="project-tab" data-project="donelson">Donelson Remodel <span class="tab-badge completed">Completed</span></button>
-        <button class="project-tab" data-project="active">Active Project <span class="tab-badge active-badge">In Progress</span></button>
-        <button class="project-tab" data-project="coming-soon">Coming Soon <span class="tab-badge soon">Upcoming</span></button>
-      </div>
-
-      <!-- LEWISBURG BARNDOMINIUM -->
-      <div class="project-panel active" id="panel-lewisburg">
-        <div class="project-header">
-          <img src="img/posters/lewisburg-barndominium.png" alt="Lewisburg Barndominium" class="project-poster">
-          <div class="project-info">
-            <h2>Lewisburg Barndominium</h2>
-            <div class="project-meta">
-              <span>Lewisburg, TN</span>
-              <span class="dot"></span>
-              <span>Custom Home</span>
-              <span class="dot"></span>
-              <span>Liberty Valley Rd</span>
-            </div>
-            <p>A custom barndominium build on Liberty Valley Road in Lewisburg, Tennessee. This project combined the open, flexible layout of barn-style construction with high-end residential finishes &mdash; vaulted wood ceilings, polished concrete floors, a chef&rsquo;s kitchen, and thoughtful details throughout.</p>
-            <ul class="project-scope">
-              <li><span class="scope-icon">✓</span> Custom new construction</li>
-              <li><span class="scope-icon">✓</span> Metal roof &amp; board-and-batten exterior</li>
-              <li><span class="scope-icon">✓</span> Vaulted wood ceilings throughout</li>
-              <li><span class="scope-icon">✓</span> Open concept living &amp; kitchen</li>
-              <li><span class="scope-icon">✓</span> Polished concrete floors</li>
-              <li><span class="scope-icon">✓</span> Custom cabinetry &amp; finishes</li>
-            </ul>
-          </div>
+      <!-- POSTCARD WALL -->
+      <div class="postcard-wall" id="postcardWall">
+        <div class="postcard-card" data-project="lewisburg">
+          <img src="img/posters/lewisburg-barndominium.png" alt="Lewisburg Barndominium">
+          <div class="postcard-overlay"><div class="po-title">Lewisburg Barndominium</div><div class="po-meta">Custom home &middot; Lewisburg, TN</div></div>
+          <span class="postcard-badge completed">Completed</span>
         </div>
-        <h3 class="photos-heading">Project Photos</h3>
-        <div class="photo-grid" id="grid-lewisburg">
-          <div class="photo-placeholder">Upload photos to img/gallery/lewisburg-barndominium/</div>
-          <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
-          <div class="photo-placeholder">They'll appear here automatically</div>
+        <div class="postcard-card" data-project="pegram">
+          <img src="img/posters/pegram-restoration.png" alt="Pegram Restoration">
+          <div class="postcard-overlay"><div class="po-title">Pegram Restoration</div><div class="po-meta">Whole home remodel &middot; Pegram, TN</div></div>
+          <span class="postcard-badge completed">Completed</span>
+        </div>
+        <div class="postcard-card" data-project="nashville">
+          <div class="postcard-placeholder"><div class="pp-brand">52 Build</div><div class="pp-title">Nashville New Builds</div><div class="pp-meta">New construction &middot; James Ct, Nashville, TN</div></div>
+          <span class="postcard-badge completed">Completed</span>
+        </div>
+        <div class="postcard-card" data-project="murfreesboro">
+          <div class="postcard-placeholder"><div class="pp-brand">52 Build</div><div class="pp-title">Murfreesboro Remodel</div><div class="pp-meta">Whole home remodel &middot; Murfreesboro, TN</div></div>
+          <span class="postcard-badge completed">Completed</span>
+        </div>
+        <div class="postcard-card" data-project="donelson">
+          <div class="postcard-placeholder"><div class="pp-brand">52 Build</div><div class="pp-title">Donelson Remodel</div><div class="pp-meta">Whole home remodel &middot; Donelson, TN</div></div>
+          <span class="postcard-badge completed">Completed</span>
+        </div>
+        <div class="postcard-card postcard-dashed" data-project="active">
+          <div class="postcard-dashed-inner"><div class="pd-icon">&#x1F3D7;</div><div class="pd-title">Active Project</div><div class="pd-sub">In progress &middot; Updates coming soon</div></div>
+        </div>
+        <div class="postcard-card postcard-dashed" data-project="coming-soon">
+          <div class="postcard-dashed-inner"><div class="pd-icon">&#x1F4CB;</div><div class="pd-title">Coming Soon</div><div class="pd-sub">New project in the pipeline</div></div>
         </div>
       </div>
 
-      <!-- PEGRAM RESTORATION -->
-      <div class="project-panel" id="panel-pegram">
-        <div class="project-header">
-          <img src="img/posters/pegram-restoration.png" alt="Pegram Restoration" class="project-poster">
-          <div class="project-info">
-            <h2>Pegram Restoration</h2>
-            <div class="project-meta">
-              <span>Pegram, TN</span>
-              <span class="dot"></span>
-              <span>Insurance Restoration &amp; Whole Home Remodel</span>
-              <span class="dot"></span>
-              <span>Gourley Rd</span>
-            </div>
-            <p>What started as an insurance restoration became a complete transformation. This whole-home remodel on Gourley Road in Pegram brought modern finishes to a classic structure &mdash; exposed beams, hardwood floors, an open white kitchen, walk-in tile shower, and every room reimagined with intention.</p>
-            <ul class="project-scope">
-              <li><span class="scope-icon">✓</span> Insurance restoration</li>
-              <li><span class="scope-icon">✓</span> Whole-home remodel</li>
-              <li><span class="scope-icon">✓</span> Exposed beam ceilings</li>
-              <li><span class="scope-icon">✓</span> Hardwood flooring throughout</li>
-              <li><span class="scope-icon">✓</span> Kitchen redesign with island</li>
-              <li><span class="scope-icon">✓</span> Custom tile walk-in shower</li>
-            </ul>
-          </div>
-        </div>
-        <h3 class="photos-heading">Project Photos</h3>
-        <div class="photo-grid" id="grid-pegram">
-          <div class="photo-placeholder">Upload photos to img/gallery/pegram-restoration/</div>
-          <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
-          <div class="photo-placeholder">They'll appear here automatically</div>
-        </div>
-      </div>
-
-      <!-- NASHVILLE NEW BUILDS (JAMES CT) -->
-      <div class="project-panel" id="panel-nashville">
-        <div class="project-header" style="grid-template-columns: 1fr;">
-          <div class="project-info">
-            <h2>Nashville New Builds</h2>
-            <div class="project-meta">
-              <span>Nashville, TN</span>
-              <span class="dot"></span>
-              <span>New Construction &mdash; 2 Builds</span>
-              <span class="dot"></span>
-              <span>James Ct</span>
-            </div>
-            <p>Two new construction builds on James Court in Nashville. Each home was designed and built from the ground up with the same commitment to quality, clear communication, and attention to detail that defines every 52 Build project.</p>
-            <ul class="project-scope">
-              <li><span class="scope-icon">✓</span> New construction &mdash; 2 homes</li>
-              <li><span class="scope-icon">✓</span> Ground-up custom builds</li>
-              <li><span class="scope-icon">✓</span> Full project management</li>
-            </ul>
-          </div>
-        </div>
-        <h3 class="photos-heading">Project Photos</h3>
-        <div class="photo-grid" id="grid-nashville">
-          <div class="photo-placeholder">Upload photos to img/gallery/nashville-new-builds/</div>
-          <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
-          <div class="photo-placeholder">They'll appear here automatically</div>
-        </div>
-      </div>
-
-      <!-- MURFREESBORO REMODEL -->
-      <div class="project-panel" id="panel-murfreesboro">
-        <div class="project-header" style="grid-template-columns: 1fr;">
-          <div class="project-info">
-            <h2>Murfreesboro Remodel</h2>
-            <div class="project-meta">
-              <span>Murfreesboro, TN</span>
-              <span class="dot"></span>
-              <span>Whole Home Remodel</span>
-            </div>
-            <p>A complete whole-home remodel in Murfreesboro, Tennessee. Updated finishes throughout including new hardwood flooring, a refreshed kitchen with modern cabinetry, renovated bathrooms, a whitewashed brick fireplace with walnut mantel, and custom closet built-ins &mdash; transforming a classic brick ranch into a move-in ready home.</p>
-            <ul class="project-scope">
-              <li><span class="scope-icon">✓</span> Whole-home remodel</li>
-              <li><span class="scope-icon">✓</span> Hardwood flooring throughout</li>
-              <li><span class="scope-icon">✓</span> Kitchen renovation with new cabinetry</li>
-              <li><span class="scope-icon">✓</span> Bathroom remodel with freestanding tub</li>
-              <li><span class="scope-icon">✓</span> Whitewashed brick fireplace</li>
-              <li><span class="scope-icon">✓</span> Custom closet built-ins</li>
-            </ul>
-          </div>
-        </div>
-        <h3 class="photos-heading">Project Photos</h3>
-        <div class="photo-grid" id="grid-murfreesboro">
-          <div class="photo-placeholder">Upload photos to img/gallery/murfreesboro-remodel/</div>
-          <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
-          <div class="photo-placeholder">They'll appear here automatically</div>
-        </div>
-      </div>
-
-      <!-- DONELSON REMODEL -->
-      <div class="project-panel" id="panel-donelson">
-        <div class="project-header" style="grid-template-columns: 1fr;">
-          <div class="project-info">
-            <h2>Donelson Remodel</h2>
-            <div class="project-meta">
-              <span>Donelson, TN</span>
-              <span class="dot"></span>
-              <span>Whole Home Remodel</span>
-            </div>
-            <p>A whole-home remodel in the Donelson area of Nashville. Details and project scope coming soon as photos are finalized.</p>
-            <ul class="project-scope">
-              <li><span class="scope-icon">✓</span> Whole-home remodel</li>
-            </ul>
-          </div>
-        </div>
-        <h3 class="photos-heading">Project Photos</h3>
-        <div class="photo-grid" id="grid-donelson">
-          <div class="photo-placeholder">Upload photos to img/gallery/donelson-remodel/</div>
-          <div class="photo-placeholder">Drag &amp; drop in GitHub</div>
-          <div class="photo-placeholder">They'll appear here automatically</div>
-        </div>
-      </div>
-
-      <!-- ACTIVE PROJECT -->
-      <div class="project-panel" id="panel-active">
-        <div class="project-placeholder">
-          <div class="project-placeholder-icon">🏗</div>
-          <h2>Under Construction</h2>
-          <div class="placeholder-bar"></div>
-          <p>We're currently on-site with this project. Photos and details will be shared as the build progresses. Check back soon for updates.</p>
-        </div>
-      </div>
-
-      <!-- COMING SOON -->
-      <div class="project-panel" id="panel-coming-soon">
-        <div class="project-placeholder">
-          <div class="project-placeholder-icon">📋</div>
-          <h2>Coming Soon</h2>
-          <div class="placeholder-bar"></div>
-          <p>A new project is in the pipeline. We'll share the details once we break ground. Want to be next? Get in touch.</p>
-        </div>
-      </div>
+      <!-- PROJECT DETAIL PANELS -->
+      <div id="projectDetail"></div>
 
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="gallery-cta">
     <div class="container">
       <h2>Ready to build?</h2>
-      <p>Let's talk about your project. Renovations, additions, or new construction &mdash; we're here.</p>
+      <p>Let&rsquo;s talk about your project. Renovations, additions, or new construction &mdash; we&rsquo;re here.</p>
       <a href="contact.html" class="btn">Start Your Project &rarr;</a>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="nav-logo">
-            <span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span>
-          </a>
+          <a href="index.html" class="nav-logo"><span class="nav-logo-text"><span class="num">52</span> <span class="word">Build</span></span></a>
           <p class="footer-tagline">Renovations, additions, and new builds with clear communication and dependable delivery. Serving Middle Tennessee.</p>
         </div>
         <div class="footer-nav">
@@ -542,43 +208,174 @@
     </div>
   </footer>
 
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox" id="lightbox">
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navLightbox(-1)">&#8249;</button>
     <img id="lightbox-img" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navLightbox(1)">&#8250;</button>
   </div>
 
   <script src="js/main.js"></script>
   <script>
-    // Tab switching
-    document.querySelectorAll('.project-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.project-tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.project-panel').forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('panel-' + tab.dataset.project).classList.add('active');
-      });
-    });
+    /* ═══════════════════════════════════════════
+       PROJECT DATA — edit these arrays to add/remove photos
+       ═══════════════════════════════════════════ */
+    var PROJECTS = {
+      lewisburg: {
+        title: "Lewisburg Barndominium",
+        poster: "img/posters/lewisburg-barndominium.png",
+        hasPoster: true,
+        meta: ["Lewisburg, TN", "Custom Home", "Liberty Valley Rd"],
+        desc: "A custom barndominium build on Liberty Valley Road in Lewisburg, Tennessee. This project combined the open, flexible layout of barn-style construction with high-end residential finishes \u2014 vaulted wood ceilings, polished concrete floors, a chef\u2019s kitchen, and thoughtful details throughout.",
+        scope: ["Custom new construction", "Metal roof & board-and-batten exterior", "Vaulted wood ceilings throughout", "Open concept living & kitchen", "Polished concrete floors", "Custom cabinetry & finishes"],
+        folder: "img/gallery/lewisburg-barndominium/",
+        photos: ["1-2930 Liberty Valley Rd - 001.jpg","2-2930 Liberty Valley Rd - 002.jpg","7-2930 Liberty Valley Rd - 007.jpg","8-2930 Liberty Valley Rd - 008.jpg","9-2930 Liberty Valley Rd - 009.jpg","10-2930 Liberty Valley Rd - 010.jpg","12-2930 Liberty Valley Rd - 012.jpg","13-2930 Liberty Valley Rd - 013.jpg","14-2930 Liberty Valley Rd - 014.jpg","15-2930 Liberty Valley Rd - 015.jpg","16-2930 Liberty Valley Rd - 016.jpg","18-2930 Liberty Valley Rd - 018.jpg","21-2930 Liberty Valley Rd - 021.jpg","29-2930 Liberty Valley Rd - 029.jpg","30-2930 Liberty Valley Rd - 030.jpg","31-2930 Liberty Valley Rd - 031.jpg","33-2930 Liberty Valley Rd - 033.jpg","35-2930 Liberty Valley Rd - 035.jpg","36-2930 Liberty Valley Rd - 036.jpg","43-2930 Liberty Valley Rd - 043.jpg","45-2930 Liberty Valley Rd - 045.jpg","46-2930 Liberty Valley Rd - 046.jpg","47-2930 Liberty Valley Rd - 047.jpg","48-2930 Liberty Valley Rd - 048.jpg","49-2930 Liberty Valley Rd - 049.jpg","51-2930 Liberty Valley Rd - 051.jpg","55-2930 Liberty Valley Rd - 055.jpg","56-2930 Liberty Valley Rd - 056.jpg","58-2930 Liberty Valley Rd - 058.jpg","60-2930 Liberty Valley Rd - 060.jpg","61-2930 Liberty Valley Rd - 061.jpg","64-2930 Liberty Valley Rd - 064.jpg","66-2930 Liberty Valley Rd - 066.jpg","76-2930 Liberty Valley Rd - VD - 1.jpg"]
+      },
+      pegram: {
+        title: "Pegram Restoration",
+        poster: "img/posters/pegram-restoration.png",
+        hasPoster: true,
+        meta: ["Pegram, TN", "Insurance Restoration & Whole Home Remodel", "Gourley Rd"],
+        desc: "What started as an insurance restoration became a complete transformation. This whole-home remodel on Gourley Road in Pegram brought modern finishes to a classic structure \u2014 exposed beams, hardwood floors, an open white kitchen, walk-in tile shower, and every room reimagined with intention.",
+        scope: ["Insurance restoration", "Whole-home remodel", "Exposed beam ceilings", "Hardwood flooring throughout", "Kitchen redesign with island", "Custom tile walk-in shower"],
+        folder: "img/gallery/pegram-restoration/",
+        photos: ["14-4222 Gourley Rd - 014.jpg","16-4222 Gourley Rd - 016.jpg","20-4222 Gourley Rd - 081.jpg","21-4222 Gourley Rd - 082.jpg","22-4222 Gourley Rd - 017.jpg","23-4222 Gourley Rd - 018.jpg","25-4222 Gourley Rd - 020.jpg","27-4222 Gourley Rd - 022.jpg","29-4222 Gourley Rd - 024.jpg","33-4222 Gourley Rd - 028.jpg","43-4222 Gourley Rd - 038.jpg","48-4222 Gourley Rd - 043.jpg","50-4222 Gourley Rd - 045.jpg","51-4222 Gourley Rd - 046.jpg","52-4222 Gourley Rd - 047.jpg","53-4222 Gourley Rd - 048.jpg","60-4222 Gourley Rd - 055.jpg","61-4222 Gourley Rd - 056.jpg","68-4222 Gourley Rd - 063.jpg","69-4222 Gourley Rd - 064.jpg","75-4222 Gourley Rd - 070.jpg","77-4222 Gourley Rd - 072.jpg","78-4222 Gourley Rd - 073.jpg","82-4222 Gourley Rd - 077.jpg"]
+      },
+      nashville: {
+        title: "Nashville New Builds",
+        poster: null,
+        hasPoster: false,
+        meta: ["Nashville, TN", "New Construction \u2014 2 Builds", "James Ct"],
+        desc: "Two new construction builds on James Court in Nashville. Each home was designed and built from the ground up with the same commitment to quality, clear communication, and attention to detail that defines every 52 Build project.",
+        scope: ["New construction \u2014 2 homes", "Ground-up custom builds", "Full project management"],
+        folder: "img/gallery/nashville-new-builds/",
+        photos: ["00EB5DC7-F7A0-499E-886F-1DE6ADA168F1_1_105_c.jpeg","0841EB4E-C04B-46DA-95D0-766AADAAED2E_1_105_c.jpeg","095FC196-064E-4C68-8655-EA20625D84B3_1_105_c.jpeg","10E16708-5C6C-4C21-A7A7-5F953F76F454_1_105_c.jpeg","1519E621-08D1-4049-B33F-52E47F9C98AD_1_105_c.jpeg","173587D6-7DDD-46A4-9913-F366E0622E66_1_105_c.jpeg","180AE7E6-4231-4C50-BF5F-FE9A71C2D1EF_1_105_c.jpeg","182B6888-094D-4A54-BA17-D7CCDC70EF6E_1_105_c.jpeg","2544BAD6-AFF2-444E-8EF7-C03AE311907B_1_105_c.jpeg","25D8F9AD-9F23-4F73-98A3-630B7064AC2B_1_105_c.jpeg","26CF7E88-3FBA-4377-B924-EDAD831126A8_1_105_c.jpeg","2D66BA07-0ADA-4815-84CC-DBA362A12325_1_105_c.jpeg","3B04F599-EA22-4EEE-A869-997019A73A31_1_105_c.jpeg","3F415CF0-42AE-4F75-9074-E05923953633_1_105_c.jpeg","410C2540-3C39-467E-B078-2A9FAEE6A926_1_105_c.jpeg","41A3065C-7997-4501-B91D-1F71F70E8DC1_1_105_c.jpeg","4B2F16B6-7253-4641-993A-7A5C26C910C5_1_105_c.jpeg","58995C70-B39B-4E6A-AB83-27A8B1AA1C04_1_105_c.jpeg","616D1988-BC12-47B7-8D96-0DB85A2DD3AF_1_105_c.jpeg","65EA8C2A-C4D7-474A-8DBF-07EB5DEA46C9_1_105_c.jpeg","6F2E5F75-D5E7-412B-B76B-C5F9D49C2B41_1_105_c.jpeg","71CC3F2E-09EF-42DF-916F-2A128B2849B3_1_105_c.jpeg","74131839-2B9E-44AF-96B0-73A2C75A5C35_1_105_c.jpeg","76D7BC0E-A5CF-4B6F-8E6D-A7D1FC1D8B77_1_105_c.jpeg","7DEA8F44-38FC-42BA-B6F9-B3E1FC07C17F_1_105_c.jpeg","89DFBA63-8EA2-4F45-AF1E-F24BFED76E93_1_105_c.jpeg","8E7C12E0-B1B1-4B52-A1B3-0D2D4C4B1F38_1_105_c.jpeg","92C4EA0D-0E26-40AA-A59A-24A204FD2C5D_1_105_c.jpeg","99B04D77-7F17-4C18-9B89-3E2FB2A08E7E_1_105_c.jpeg","A0B3A5E6-89D3-4C4D-908A-49CFF67F96CD_1_105_c.jpeg","A27B8CF5-B283-47DF-AB73-65BC3B5E6D42_1_105_c.jpeg","A7FCF26A-1C60-4C5D-9839-A0D1367E95B1_1_105_c.jpeg","B4CFCA53-31E0-4C2B-9E85-5E0FA6E98D6A_1_105_c.jpeg","B6E09D3D-78B5-4E43-87C4-30AE94DA1975_1_105_c.jpeg","BA27983D-E6D4-43FE-B3E7-42CAA51285DD_1_105_c.jpeg","BCC2B90A-D8F9-4E35-89FA-CDF69A63C5F4_1_105_c.jpeg","C0B3E5D7-D0F1-4B8A-9C7A-7A6B8F4D3E12_1_105_c.jpeg","C27E38D5-CCA8-4D22-B1D6-0B4C13E8F7A2_1_105_c.jpeg","D3A7B6C4-E8F2-4D9A-A0B5-1C2E3F4D5A6B_1_105_c.jpeg","D8E7A3B5-F0C1-4D2E-B9A6-7F8E9D0C1B2A_1_105_c.jpeg","E1D2C3B4-A5F6-4E7D-8B9C-0A1B2C3D4E5F_1_105_c.jpeg","E4B7F8A2-C3D6-4E19-A5B0-8F2E7D6C9A13_1_105_c.jpeg","E9F8D7C6-B5A4-4E3D-9C2B-1A0F8E7D6C5B_1_105_c.jpeg","F2A3B4C5-D6E7-4F8A-9B0C-1D2E3F4A5B6C_1_105_c.jpeg","F5E4D3C2-B1A0-4F9E-8D7C-6B5A4F3E2D1C_1_105_c.jpeg","F8C7D6E5-A4B3-4E2F-9D1C-0A8B7F6E5D4C_1_105_c.jpeg","FA9B8C7D-6E5F-4A3B-2C1D-0E9F8A7B6C5D_1_105_c.jpeg","FD6E7F8A-9B0C-4D1E-2F3A-4B5C6D7E8F9A_1_105_c.jpeg","FE8D7C6B-5A4F-4E3D-2C1B-0A9F8E7D6C5B_1_105_c.jpeg"]
+      },
+      murfreesboro: {
+        title: "Murfreesboro Remodel",
+        poster: null,
+        hasPoster: false,
+        meta: ["Murfreesboro, TN", "Whole Home Remodel"],
+        desc: "A complete whole-home remodel in Murfreesboro, Tennessee. Updated finishes throughout including new hardwood flooring, a refreshed kitchen with modern cabinetry, renovated bathrooms, a whitewashed brick fireplace with walnut mantel, and custom closet built-ins \u2014 transforming a classic brick ranch into a move-in ready home.",
+        scope: ["Whole-home remodel", "Hardwood flooring throughout", "Kitchen renovation with new cabinetry", "Bathroom remodel with freestanding tub", "Whitewashed brick fireplace", "Custom closet built-ins"],
+        folder: "img/gallery/murfreesboro-remodel/",
+        photos: []
+      },
+      donelson: {
+        title: "Donelson Remodel",
+        poster: null,
+        hasPoster: false,
+        meta: ["Donelson, TN", "Whole Home Remodel"],
+        desc: "A whole-home remodel in the Donelson area of Nashville. Details and project scope coming soon as photos are finalized.",
+        scope: ["Whole-home remodel"],
+        folder: "img/gallery/donelson-remodel/",
+        photos: []
+      },
+      active: { type: "placeholder", icon: "\u{1F3D7}", title: "Under Construction", text: "We\u2019re currently on-site with this project. Photos and details will be shared as the build progresses. Check back soon for updates." },
+      "coming-soon": { type: "placeholder", icon: "\u{1F4CB}", title: "Coming Soon", text: "A new project is in the pipeline. We\u2019ll share the details once we break ground. Want to be next? Get in touch." }
+    };
+
+    /* ═══════════════════════════════════════════
+       GALLERY ENGINE
+       ═══════════════════════════════════════════ */
+    var wall = document.getElementById("postcardWall");
+    var detailEl = document.getElementById("projectDetail");
+    var currentPhotos = [];
+    var currentPhotoIdx = 0;
+
+    function showProject(key) {
+      var p = PROJECTS[key];
+      if (!p) return;
+
+      wall.classList.add("hidden");
+
+      if (p.type === "placeholder") {
+        detailEl.innerHTML =
+          '<button class="back-to-projects" onclick="showWall()">\u2190 All Projects</button>' +
+          '<div class="project-placeholder"><div class="project-placeholder-icon">' + p.icon + '</div>' +
+          '<h2>' + p.title + '</h2><div class="placeholder-bar"></div><p>' + p.text + '</p></div>';
+        detailEl.classList.add("open");
+        window.scrollTo({ top: detailEl.offsetTop - 100, behavior: "smooth" });
+        return;
+      }
+
+      var metaHTML = p.meta.map(function(m, i) {
+        return (i > 0 ? '<span class="dot"></span>' : '') + '<span>' + m + '</span>';
+      }).join('');
+
+      var scopeHTML = p.scope.map(function(s) {
+        return '<li><span class="scope-icon">\u2713</span> ' + s + '</li>';
+      }).join('');
+
+      var headerClass = p.hasPoster ? 'project-header' : 'project-header single-col';
+      var posterHTML = p.hasPoster ? '<img src="' + p.poster + '" alt="' + p.title + '" class="project-poster">' : '';
+
+      var photosHTML = '';
+      if (p.photos && p.photos.length > 0) {
+        currentPhotos = p.photos.map(function(f) { return p.folder + encodeURIComponent(f); });
+        photosHTML = p.photos.map(function(f, i) {
+          var src = p.folder + encodeURIComponent(f);
+          return '<img src="' + src + '" alt="' + p.title + ' photo ' + (i+1) + '" loading="lazy" onclick="openLightbox(' + i + ')">';
+        }).join('');
+      } else {
+        currentPhotos = [];
+        photosHTML = '<div class="photo-placeholder">Photos coming soon</div><div class="photo-placeholder">Check back for updates</div><div class="photo-placeholder">New photos added regularly</div>';
+      }
+
+      detailEl.innerHTML =
+        '<button class="back-to-projects" onclick="showWall()">\u2190 All Projects</button>' +
+        '<div class="' + headerClass + '">' + posterHTML +
+        '<div class="project-info"><h2>' + p.title + '</h2>' +
+        '<div class="project-meta">' + metaHTML + '</div>' +
+        '<p>' + p.desc + '</p>' +
+        '<ul class="project-scope">' + scopeHTML + '</ul></div></div>' +
+        '<h3 class="photos-heading">Project Photos</h3>' +
+        '<div class="photo-grid">' + photosHTML + '</div>';
+
+      detailEl.classList.add("open");
+      window.scrollTo({ top: detailEl.offsetTop - 100, behavior: "smooth" });
+    }
+
+    function showWall() {
+      detailEl.classList.remove("open");
+      detailEl.innerHTML = '';
+      wall.classList.remove("hidden");
+      window.scrollTo({ top: wall.offsetTop - 100, behavior: "smooth" });
+    }
 
     // Lightbox
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').classList.add('open');
-      document.body.style.overflow = 'hidden';
+    function openLightbox(idx) {
+      currentPhotoIdx = idx;
+      var lb = document.getElementById("lightbox");
+      document.getElementById("lightbox-img").src = currentPhotos[idx];
+      lb.classList.add("open");
+      document.body.style.overflow = "hidden";
     }
     function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('open');
-      document.body.style.overflow = '';
+      document.getElementById("lightbox").classList.remove("open");
+      document.body.style.overflow = "";
     }
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    function navLightbox(dir) {
+      currentPhotoIdx = (currentPhotoIdx + dir + currentPhotos.length) % currentPhotos.length;
+      document.getElementById("lightbox-img").src = currentPhotos[currentPhotoIdx];
+    }
+    document.getElementById("lightbox").addEventListener("click", function(e) {
+      if (e.target === this) closeLightbox();
+    });
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") navLightbox(-1);
+      if (e.key === "ArrowRight") navLightbox(1);
+    });
 
-    // Make photo grid images clickable
-    document.querySelectorAll('.photo-grid img').forEach(img => {
-      img.addEventListener('click', () => openLightbox(img.src));
+    // Wire up postcard clicks
+    document.querySelectorAll(".postcard-card").forEach(function(card) {
+      card.addEventListener("click", function() {
+        showProject(this.dataset.project);
+      });
     });
   </script>
 
-  <!-- WhatsApp -->
   <a href="https://wa.me/16152788657" target="_blank" style="position:fixed;bottom:24px;right:24px;z-index:90;background:#25D366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
