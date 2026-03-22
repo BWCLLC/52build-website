@@ -269,15 +269,15 @@ var PROJECTS = {
   },
   donelson: {
     title: "Donelson Remodel",
-    poster: null,
-    hasPoster: false,
+    poster: "img/posters/donelson-remodel.png",
+    hasPoster: true,
     meta: ["Donelson, TN", "Whole Home Remodel"],
     desc: "A whole-home remodel in the Donelson area of Nashville. Details and project scope coming soon as photos are finalized.",
     scope: ["Whole-home remodel"],
     folder: "img/gallery/donelson-remodel/",
     photos: []
   },
-  active: { type: "placeholder", icon: "\u{1F3D7}", title: "Under Construction", text: "We\u2019re currently on-site with this project. Photos and details will be shared as the build progresses. Check back soon for updates." },
+  active: { type: "placeholder", icon: "\u{1F3D7}", title: "Under Construction", poster: "img/posters/active-project.png", text: "We\u2019re currently on-site with this project. Photos and details will be shared as the build progresses. Check back soon for updates." },
   "coming-soon": { type: "placeholder", icon: "\u{1F4CB}", title: "Coming Soon", text: "A new project is in the pipeline. We\u2019ll share the details once we break ground. Want to be next? Get in touch." }
 };
 
@@ -295,8 +295,10 @@ function showProject(key) {
   wall.classList.add("hidden");
 
   if (p.type === "placeholder") {
+    var posterHTML = p.poster ? '<img src="' + p.poster + '" alt="' + p.title + '" class="project-poster" style="max-width:400px;margin:0 auto 32px;display:block">' : '';
     detailEl.innerHTML =
       '<button class="back-to-projects" onclick="showWall()">\u2190 All Projects</button>' +
+      posterHTML +
       '<div class="project-placeholder"><div class="project-placeholder-icon">' + p.icon + '</div>' +
       '<h2>' + p.title + '</h2><div class="placeholder-bar"></div><p>' + p.text + '</p></div>';
     detailEl.classList.add("open");
