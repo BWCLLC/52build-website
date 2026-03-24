@@ -37,3 +37,29 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 });
+
+// ============================================
+// APP LINK OVERRIDE — Remove when app is ready
+// ============================================
+document.querySelectorAll('.nav-cta').forEach(el => {
+  el.href = '#';
+  el.removeAttribute('target');
+  el.innerHTML = el.innerHTML.replace(/Open App/i, 'Coming Soon');
+  el.style.opacity = '0.5';
+  el.style.pointerEvents = 'none';
+  el.style.cursor = 'default';
+});
+
+var mobileBar = document.querySelector('.mobile-app-bar');
+if (mobileBar) mobileBar.style.display = 'none';
+
+document.querySelectorAll('a[href*="app.52-build.com"]').forEach(el => {
+  if (el.closest('.footer-links')) return;
+  el.href = '#';
+  el.removeAttribute('target');
+  if (el.textContent.includes('Track Your Project')) el.textContent = 'App Coming Soon';
+  if (el.textContent.includes('Open the App')) el.textContent = 'App Coming Soon';
+  el.style.opacity = '0.5';
+  el.style.pointerEvents = 'none';
+});
+// ============================================
