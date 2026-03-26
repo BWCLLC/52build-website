@@ -41,25 +41,27 @@ document.addEventListener('DOMContentLoaded', function() {
 // ============================================
 // APP LINK OVERRIDE — Remove when app is ready
 // ============================================
+// Redirect nav "Open App" buttons to the app landing page
 document.querySelectorAll('.nav-cta').forEach(el => {
-  el.href = '#';
-  el.removeAttribute('target');
-  el.innerHTML = el.innerHTML.replace(/Open App/i, 'Coming Soon');
-  el.style.opacity = '0.5';
-  el.style.pointerEvents = 'none';
-  el.style.cursor = 'default';
+  if (el.href && el.href.includes('app.52-build.com')) {
+    el.href = 'app.html';
+    el.removeAttribute('target');
+  }
 });
 
+// Hide the mobile app bar (landing page has its own CTAs)
 var mobileBar = document.querySelector('.mobile-app-bar');
 if (mobileBar) mobileBar.style.display = 'none';
 
-document.querySelectorAll('a[href*="app.52-build.com"]').forEach(el => {
-  if (el.closest('.footer-links')) return;
-  el.href = '#';
-  el.removeAttribute('target');
-  if (el.textContent.includes('Track Your Project')) el.textContent = 'App Coming Soon';
-  if (el.textContent.includes('Open the App')) el.textContent = 'App Coming Soon';
-  el.style.opacity = '0.5';
-  el.style.pointerEvents = 'none';
-});
+// Redirect body app links to landing page (except on app.html itself)
+if (!window.location.pathname.includes('app.html')) {
+  document.querySelectorAll('a[href*="app.52-build.com"]').forEach(el => {
+    if (el.closest('.footer-links')) return;
+    if (el.closest('.access-card')) return;
+    el.href = 'app.html';
+    el.removeAttribute('target');
+    if (el.textContent.includes('Track Your Project')) el.textContent = 'Explore the App \u2192';
+    if (el.textContent.includes('Open the App')) el.textContent = 'Explore the App \u2192';
+  });
+}
 // ============================================
