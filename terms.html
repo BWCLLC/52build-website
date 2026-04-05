@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service | 52 Build</title>
+  <meta name="description" content="52 Build Terms of Service — the terms and conditions governing your use of our construction project management platform.">
+  <link rel="canonical" href="https://52-build.com/terms.html">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #14555A;
+      --copper: #C7652E;
+      --gold: #C4A55A;
+      --dark-bg: #0a0a0a;
+      --card-bg: #141414;
+      --border: #1e1e1e;
+      --text: #e0e0e0;
+      --text-muted: #888;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: var(--copper); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--gold); }
+
+    /* ─── NAV ─── */
+    .site-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem; color: #fff; text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; align-items: center; gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted); font-size: 0.85rem;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-app-btn {
+      background: var(--teal) !important; color: #fff !important;
+      padding: 0.45rem 1.1rem; border-radius: 6px;
+      font-weight: 500; font-size: 0.82rem !important;
+    }
+    .nav-app-btn:hover { background: #1a6b71 !important; }
+    .mobile-toggle {
+      display: none; background: none; border: none;
+      color: #fff; font-size: 1.5rem; cursor: pointer;
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem; color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .subtitle {
+      color: var(--text-muted); font-size: 0.9rem;
+    }
+
+    /* ─── LEGAL CONTENT ─── */
+    .legal-content {
+      max-width: 780px; margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+    .legal-content .intro {
+      font-size: 0.95rem; color: var(--text-muted);
+      margin-bottom: 2.5rem; line-height: 1.8;
+    }
+    .legal-content h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem; color: #fff;
+      margin: 2.5rem 0 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .legal-content h2:first-of-type {
+      border-top: none; padding-top: 0;
+    }
+    .legal-content h3 {
+      font-size: 1rem; color: var(--gold);
+      margin: 1.5rem 0 0.75rem;
+      font-weight: 600;
+    }
+    .legal-content p {
+      margin-bottom: 1rem; font-size: 0.92rem;
+      color: var(--text);
+    }
+    .legal-content ul {
+      margin: 0.75rem 0 1.25rem 1.5rem;
+    }
+    .legal-content li {
+      margin-bottom: 0.6rem; font-size: 0.92rem;
+    }
+    .legal-content li strong {
+      color: #fff;
+    }
+    .legal-content .contact-block {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+    }
+    .legal-content .contact-block p {
+      margin-bottom: 0.3rem;
+    }
+    .legal-content .draft-notice {
+      margin-top: 2.5rem;
+      padding: 1rem 1.5rem;
+      background: rgba(199, 101, 46, 0.08);
+      border-left: 3px solid var(--copper);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: var(--dark-bg);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;
+    }
+    .footer-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+    .footer-col h4 {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-muted); margin-bottom: 0.75rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; }
+    .footer-col a { color: var(--text-muted); font-size: 0.85rem; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 960px; margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+    .footer-bottom a { color: var(--text-muted); }
+    .footer-bottom a:hover { color: #fff; }
+
+    /* ─── WHATSAPP ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 56px; height: 56px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      z-index: 999; transition: transform 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); color: #fff; }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ─── MOBILE APP BAR ─── */
+    .mobile-app-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--teal); text-align: center;
+      padding: 0.7rem; z-index: 100;
+    }
+    .mobile-app-bar a {
+      color: #fff; font-weight: 600; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.98); padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .page-header { padding: 3rem 1.5rem 1.5rem; }
+      .page-header h1 { font-size: 1.8rem; }
+      .legal-content { padding: 2rem 1.25rem 5rem; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .mobile-app-bar { display: block; }
+      .whatsapp-float { bottom: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">52 <span>Build</span></a>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-we-work.html">How We Work</a></li>
+    <li><a href="our-values.html">Our Values</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://app.52-build.com" class="nav-app-btn" target="_blank">Open App</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1>Terms of Service</h1>
+  <p class="subtitle">Last Updated: April 5, 2026 &nbsp;|&nbsp; Effective: April 5, 2026</p>
+</div>
+
+<div class="legal-content">
+
+  <p class="intro">These Terms of Service ("Terms") govern your use of the 52 Build construction project management platform, including the web application at app.52-build.com, the 52 Build iOS application, and related services (collectively, the "Service"), operated by Second Star Properties DBA 52 Build ("52 Build," "we," "us," or "our"). By creating an account or using the Service, you agree to these Terms.</p>
+
+  <h2>1. Account Registration</h2>
+  <p>To use 52 Build, you must create an account with accurate and complete information. You are responsible for maintaining the confidentiality of your login credentials and for all activity that occurs under your account. You must notify us immediately at <a href="mailto:contact@52-build.com">contact@52-build.com</a> if you suspect unauthorized access to your account.</p>
+  <p>You must be at least 18 years old and have the legal authority to enter into these Terms. If you are using the Service on behalf of a business, you represent that you have the authority to bind that business to these Terms.</p>
+
+  <h2>2. Use of the Service</h2>
+  <p>52 Build provides tools for construction project management, including project tracking, estimating, contract generation, scheduling, client communication, and field documentation. You may use the Service for your legitimate business purposes in accordance with these Terms.</p>
+
+  <h3>You agree not to:</h3>
+  <ul>
+    <li>Use the Service for any unlawful purpose or in violation of any applicable laws or regulations</li>
+    <li>Share your account credentials with unauthorized users</li>
+    <li>Attempt to access another user's data or projects without authorization</li>
+    <li>Interfere with or disrupt the Service or its infrastructure</li>
+    <li>Use the Service to transmit malicious code, spam, or harmful content</li>
+    <li>Reverse engineer, decompile, or attempt to extract source code from the Service</li>
+    <li>Resell, sublicense, or redistribute the Service without our written consent</li>
+  </ul>
+
+  <h2>3. Your Data</h2>
+  <p>You retain ownership of all data you create, upload, or input into 52 Build, including project information, documents, photos, audio recordings, estimates, and contracts ("Your Data"). We do not claim ownership of Your Data.</p>
+  <p>You grant us a limited license to use Your Data solely for the purposes of operating, maintaining, and improving the Service. This includes processing Your Data through our third-party service providers (Supabase, Deepgram, Anthropic) as described in our <a href="privacy.html">Privacy Policy</a>.</p>
+  <p>You are responsible for the accuracy and legality of Your Data. You represent that you have the necessary rights to upload any content to the Service and that Your Data does not infringe the intellectual property rights of any third party.</p>
+
+  <h2>4. AI-Generated Content</h2>
+  <p>52 Build uses artificial intelligence to assist with generating scope items, daily log summaries, project narratives, and other content. AI-generated content is provided as a starting point and should be reviewed and edited by you before use. We do not guarantee the accuracy, completeness, or legal sufficiency of AI-generated content. You are solely responsible for reviewing and approving all content before it is shared with clients, subcontractors, or used in contracts.</p>
+
+  <h2>5. Project Sharing and Collaboration</h2>
+  <p>When you invite clients, subcontractors, or team members to a project, you control what information they can access based on their role. You are responsible for managing access to your projects and ensuring that invited participants are authorized to view the shared information.</p>
+  <p>When a subcontractor or client accepts a project invitation, they agree to these Terms as they relate to their use of the Service.</p>
+
+  <h2>6. Contracts and Legal Documents</h2>
+  <p>52 Build provides tools for generating contracts, estimates, change orders, and other project documents. These tools are designed to assist with document creation and are not a substitute for legal advice. We do not guarantee that any document generated through the Service complies with applicable laws or regulations in your jurisdiction. We strongly recommend having an attorney review any contracts or legal documents before execution.</p>
+
+  <h2>7. Payment and Subscription</h2>
+  <p>Access to certain features of the Service may require a paid subscription. Subscription terms, pricing, and billing details will be presented to you at the time of purchase. We reserve the right to change pricing with 30 days' advance notice. Subscription fees are non-refundable except as required by applicable law.</p>
+
+  <h2>8. Service Availability</h2>
+  <p>We strive to keep the Service available at all times but do not guarantee uninterrupted access. The Service may be temporarily unavailable due to maintenance, updates, or circumstances beyond our control. We will make reasonable efforts to provide advance notice of planned maintenance.</p>
+
+  <h2>9. Limitation of Liability</h2>
+  <p>To the maximum extent permitted by law, 52 Build and its officers, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or business opportunities, arising from your use of the Service.</p>
+  <p>Our total liability for any claims arising from or related to the Service shall not exceed the total amount you paid to us in the twelve (12) months preceding the claim.</p>
+
+  <h2>10. Indemnification</h2>
+  <p>You agree to indemnify and hold harmless 52 Build, its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including reasonable attorney's fees) arising from your use of the Service, your violation of these Terms, or your violation of any third-party rights.</p>
+
+  <h2>11. Intellectual Property</h2>
+  <p>The Service, including its design, features, code, branding, and documentation, is owned by 52 Build and protected by intellectual property laws. These Terms do not grant you any rights to our intellectual property except the limited right to use the Service as described herein.</p>
+
+  <h2>12. Account Termination</h2>
+  <p>You may cancel your account at any time by contacting us at <a href="mailto:contact@52-build.com">contact@52-build.com</a>. Upon cancellation, your data will be preserved for 90 days (as described in our <a href="privacy.html">Privacy Policy</a>) before deletion.</p>
+  <p>We reserve the right to suspend or terminate your account if you violate these Terms, engage in fraudulent activity, or use the Service in a way that could harm other users or the Service itself. We will make reasonable efforts to notify you before termination except in cases of severe or urgent violations.</p>
+
+  <h2>13. Changes to These Terms</h2>
+  <p>We may update these Terms from time to time. We will notify you of material changes by email or through the Service at least 30 days before the changes take effect. Your continued use of the Service after the updated Terms become effective constitutes your acceptance of the changes.</p>
+
+  <h2>14. Governing Law</h2>
+  <p>These Terms are governed by the laws of the State of Tennessee. Any disputes arising from these Terms or the Service shall be resolved in the state or federal courts located in Williamson County, Tennessee.</p>
+
+  <h2>15. Contact Us</h2>
+  <p>If you have questions about these Terms, please contact us at:</p>
+  <div class="contact-block">
+    <p><strong>52 Build</strong></p>
+    <p>Second Star Properties</p>
+    <p>Franklin, TN 37067</p>
+    <p>Email: <a href="mailto:contact@52-build.com">contact@52-build.com</a></p>
+  </div>
+
+  <div class="draft-notice">
+    These terms of service are a draft and should be reviewed by a licensed attorney before publication.
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">52 Build</div>
+      <p class="footer-desc">Renovations, additions, and new builds with clear communication and dependable delivery. Serving Middle Tennessee.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-we-work.html">How We Work</a></li>
+        <li><a href="our-values.html">Our Values</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:6152788657">615.278.8657</a></li>
+        <li><a href="mailto:contact@52-build.com">contact@52-build.com</a></li>
+        <li><a href="https://app.52-build.com" target="_blank">52 Build App</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 52 Build. All rights reserved.</span>
+    <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a></span>
+  </div>
+</footer>
+
+<a href="https://wa.me/16152788657?text=Hi%2C%20I%27m%20interested%20in%20learning%20more%20about%2052%20Build." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="mobile-app-bar">
+  <a href="https://app.52-build.com" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    Open the 52 Build App
+  </a>
+</div>
+
+</body>
+</html>

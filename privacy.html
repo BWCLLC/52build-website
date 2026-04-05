@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | 52 Build</title>
+  <meta name="description" content="52 Build Privacy Policy — how we collect, use, and protect your personal information when you use our construction project management platform.">
+  <link rel="canonical" href="https://52-build.com/privacy.html">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal: #14555A;
+      --copper: #C7652E;
+      --gold: #C4A55A;
+      --dark-bg: #0a0a0a;
+      --card-bg: #141414;
+      --border: #1e1e1e;
+      --text: #e0e0e0;
+      --text-muted: #888;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    a { color: var(--copper); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--gold); }
+
+    /* ─── NAV ─── */
+    .site-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      background: rgba(10,10,10,0.95);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem; color: #fff; text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; align-items: center; gap: 1.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted); font-size: 0.85rem;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-app-btn {
+      background: var(--teal) !important; color: #fff !important;
+      padding: 0.45rem 1.1rem; border-radius: 6px;
+      font-weight: 500; font-size: 0.82rem !important;
+    }
+    .nav-app-btn:hover { background: #1a6b71 !important; }
+    .mobile-toggle {
+      display: none; background: none; border: none;
+      color: #fff; font-size: 1.5rem; cursor: pointer;
+    }
+
+    /* ─── PAGE HEADER ─── */
+    .page-header {
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem; color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .page-header .subtitle {
+      color: var(--text-muted); font-size: 0.9rem;
+    }
+
+    /* ─── LEGAL CONTENT ─── */
+    .legal-content {
+      max-width: 780px; margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+    .legal-content .intro {
+      font-size: 0.95rem; color: var(--text-muted);
+      margin-bottom: 2.5rem; line-height: 1.8;
+    }
+    .legal-content h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem; color: #fff;
+      margin: 2.5rem 0 1rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .legal-content h2:first-of-type {
+      border-top: none; padding-top: 0;
+    }
+    .legal-content h3 {
+      font-size: 1rem; color: var(--gold);
+      margin: 1.5rem 0 0.75rem;
+      font-weight: 600;
+    }
+    .legal-content p {
+      margin-bottom: 1rem; font-size: 0.92rem;
+      color: var(--text);
+    }
+    .legal-content ul {
+      margin: 0.75rem 0 1.25rem 1.5rem;
+    }
+    .legal-content li {
+      margin-bottom: 0.6rem; font-size: 0.92rem;
+    }
+    .legal-content li strong {
+      color: #fff;
+    }
+    .legal-content .contact-block {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 2rem;
+      margin-top: 1.5rem;
+    }
+    .legal-content .contact-block p {
+      margin-bottom: 0.3rem;
+    }
+    .legal-content .draft-notice {
+      margin-top: 2.5rem;
+      padding: 1rem 1.5rem;
+      background: rgba(199, 101, 46, 0.08);
+      border-left: 3px solid var(--copper);
+      border-radius: 0 6px 6px 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer {
+      background: var(--dark-bg);
+      border-top: 1px solid var(--border);
+      padding: 3rem 2rem 2rem;
+    }
+    .footer-inner {
+      max-width: 960px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem;
+    }
+    .footer-brand {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;
+    }
+    .footer-desc { color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+    .footer-col h4 {
+      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--text-muted); margin-bottom: 0.75rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.4rem; }
+    .footer-col a { color: var(--text-muted); font-size: 0.85rem; }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 960px; margin: 2rem auto 0;
+      padding-top: 1.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.75rem; color: var(--text-muted);
+    }
+    .footer-bottom a { color: var(--text-muted); }
+    .footer-bottom a:hover { color: #fff; }
+
+    /* ─── WHATSAPP ─── */
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px;
+      width: 56px; height: 56px;
+      background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      z-index: 999; transition: transform 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); color: #fff; }
+    .whatsapp-float svg { width: 28px; height: 28px; }
+
+    /* ─── MOBILE APP BAR ─── */
+    .mobile-app-bar {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--teal); text-align: center;
+      padding: 0.7rem; z-index: 100;
+    }
+    .mobile-app-bar a {
+      color: #fff; font-weight: 600; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: absolute; top: 64px; left: 0; right: 0;
+        background: rgba(10,10,10,0.98); padding: 1.5rem 2rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .page-header { padding: 3rem 1.5rem 1.5rem; }
+      .page-header h1 { font-size: 1.8rem; }
+      .legal-content { padding: 2rem 1.25rem 5rem; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .mobile-app-bar { display: block; }
+      .whatsapp-float { bottom: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-logo">52 <span>Build</span></a>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">&#9776;</button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="how-we-work.html">How We Work</a></li>
+    <li><a href="our-values.html">Our Values</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://app.52-build.com" class="nav-app-btn" target="_blank">Open App</a></li>
+  </ul>
+</nav>
+
+<div class="page-header">
+  <h1>Privacy Policy</h1>
+  <p class="subtitle">Last Updated: April 5, 2026 &nbsp;|&nbsp; Effective: April 5, 2026</p>
+</div>
+
+<div class="legal-content">
+
+  <p class="intro">Second Star Properties DBA 52 Build ("52 Build," "we," "us," or "our") operates the 52 Build construction project management platform, including the web application at app.52-build.com, the 52 Build iOS application, and related services (collectively, the "Service"). This Privacy Policy explains how we collect, use, share, and protect your personal information when you use our Service.</p>
+
+  <h2>Information We Collect</h2>
+
+  <h3>Information You Provide</h3>
+  <p>When you create an account and use 52 Build, you provide us with:</p>
+  <ul>
+    <li><strong>Account information</strong> — your name, email address, phone number, and password</li>
+    <li><strong>Company information</strong> — your company name, address, contractor license number, and business details</li>
+    <li><strong>Project data</strong> — project names, addresses, scope of work, pricing, schedules, contracts, change orders, and related construction project information</li>
+    <li><strong>Communications</strong> — messages you send through the platform to team members, clients, and subcontractors</li>
+    <li><strong>Documents</strong> — contracts, estimates, work orders, and other documents you create or upload</li>
+    <li><strong>Media</strong> — photos and audio recordings you capture through the app</li>
+    <li><strong>Financial information</strong> — project budgets, estimates, markup percentages, and pricing data (we do not collect bank account numbers, credit card numbers, or social security numbers through the app)</li>
+  </ul>
+
+  <h3>Information Collected Automatically</h3>
+  <p>When you use 52 Build, we automatically collect:</p>
+  <ul>
+    <li><strong>Location data</strong> — GPS coordinates when you use features like weather forecasting, jobsite matching, or Quick Capture. Location data is collected only while you are actively using the app and only with your device's permission.</li>
+    <li><strong>Device information</strong> — device type, operating system version, and app version for troubleshooting and compatibility</li>
+    <li><strong>Usage data</strong> — which features you use and when, to improve the Service</li>
+  </ul>
+
+  <h3>Information from Third Parties</h3>
+  <p>We do not purchase or receive your personal information from third parties.</p>
+
+  <h2>How We Use Your Information</h2>
+  <p>We use your information to:</p>
+  <ul>
+    <li><strong>Provide the Service</strong> — manage your projects, generate estimates, create contracts, track budgets, and facilitate communication between project participants</li>
+    <li><strong>Process audio and text</strong> — transcribe voice recordings and generate AI-assisted content like scope items, daily logs, and project narratives</li>
+    <li><strong>Deliver weather data</strong> — provide location-based weather information relevant to your construction projects</li>
+    <li><strong>Communicate with you</strong> — send transactional emails (password resets, project invitations, notifications), and service updates</li>
+    <li><strong>Improve the Service</strong> — analyze usage patterns to improve features and fix issues</li>
+  </ul>
+
+  <p>We do <strong>NOT</strong> use your information to:</p>
+  <ul>
+    <li>Sell your data to third parties</li>
+    <li>Display advertisements</li>
+    <li>Build advertising profiles</li>
+    <li>Share your data with data brokers</li>
+  </ul>
+
+  <h2>How We Share Your Information</h2>
+
+  <h3>With Project Participants</h3>
+  <p>When you invite clients, subcontractors, or team members to a project, they can see project data relevant to their role. Clients see project progress, schedules, and documents. Subcontractors see their assigned scope items and work orders. Team members see project details based on their permission level. No participant can see another builder's projects or company data.</p>
+
+  <h3>With Service Providers</h3>
+  <p>We use the following third-party services to operate 52 Build:</p>
+  <ul>
+    <li><strong>Supabase</strong> (database, authentication, file storage) — stores your account and project data on US-based servers</li>
+    <li><strong>Deepgram</strong> (speech-to-text) — processes audio recordings you submit for transcription. Deepgram processes audio data and returns text; they do not retain your audio after processing.</li>
+    <li><strong>Anthropic</strong> (AI processing) — processes text content to generate scope items, daily log summaries, and project narratives. Anthropic does not use your data to train their AI models.</li>
+    <li><strong>GitHub Pages</strong> (app hosting) — hosts the application code only; no user data passes through GitHub.</li>
+  </ul>
+  <p>We require our service providers to protect your data and use it only for the purposes we specify.</p>
+
+  <h3>As Required by Law</h3>
+  <p>We may disclose your information if required by law, regulation, legal process, or governmental request.</p>
+
+  <h2>Data Security</h2>
+  <p>We protect your information using:</p>
+  <ul>
+    <li><strong>Encryption in transit</strong> — all data transmitted between your device and our servers uses HTTPS/TLS encryption</li>
+    <li><strong>Encryption at rest</strong> — your data is encrypted on our database servers</li>
+    <li><strong>Row Level Security</strong> — database-level access controls ensure that each builder's data is isolated. No builder can access another builder's projects or company information.</li>
+    <li><strong>Authentication</strong> — password-based authentication with bcrypt hashing. Optional two-factor authentication is available for accounts with financial data access.</li>
+    <li><strong>API key protection</strong> — third-party API keys (for AI and transcription services) are stored server-side and never exposed in client-side code</li>
+  </ul>
+  <p>No system is perfectly secure. While we take reasonable measures to protect your information, we cannot guarantee absolute security.</p>
+
+  <h2>Data Retention</h2>
+  <ul>
+    <li><strong>Active accounts</strong> — your data is retained as long as your account is active</li>
+    <li><strong>Cancelled accounts</strong> — your data is preserved for 90 days after cancellation, then deleted. This grace period allows you to reactivate your account or export your data.</li>
+    <li><strong>Project data</strong> — project data may be retained longer than account data if other active participants (clients, subcontractors) still have access to the project</li>
+    <li><strong>Signed documents</strong> — contracts and signed documents are retained indefinitely as they serve as legal records for all parties</li>
+  </ul>
+
+  <h2>Your Rights and Choices</h2>
+  <p>You have the right to:</p>
+  <ul>
+    <li><strong>Access your data</strong> — view all personal and project data stored in your account</li>
+    <li><strong>Correct your data</strong> — update your account information, company profile, and project data at any time</li>
+    <li><strong>Delete your account</strong> — request account deletion by contacting us at <a href="mailto:privacy@52-build.com">privacy@52-build.com</a></li>
+    <li><strong>Export your data</strong> — request a copy of your project data in a standard format</li>
+    <li><strong>Control location access</strong> — enable or disable location services through your device settings</li>
+    <li><strong>Control notifications</strong> — manage email and push notification preferences in your account settings</li>
+  </ul>
+
+  <h3>California Residents (CCPA)</h3>
+  <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act, including the right to know what personal information we collect, the right to delete your personal information, and the right to opt out of the sale of your personal information. We do not sell your personal information.</p>
+
+  <h2>Children's Privacy</h2>
+  <p>52 Build is a business tool designed for construction professionals. We do not knowingly collect personal information from children under the age of 13. If you believe we have inadvertently collected such information, please contact us at <a href="mailto:privacy@52-build.com">privacy@52-build.com</a> and we will promptly delete it.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time. We will notify you of material changes by email or through the Service. Your continued use of the Service after changes are posted constitutes your acceptance of the updated policy.</p>
+
+  <h2>Contact Us</h2>
+  <p>If you have questions about this Privacy Policy or our data practices, please contact us at:</p>
+  <div class="contact-block">
+    <p><strong>52 Build</strong></p>
+    <p>Second Star Properties</p>
+    <p>Franklin, TN 37067</p>
+    <p>Email: <a href="mailto:privacy@52-build.com">privacy@52-build.com</a></p>
+  </div>
+
+  <div class="draft-notice">
+    This privacy policy is a draft and should be reviewed by a licensed attorney before publication.
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">52 Build</div>
+      <p class="footer-desc">Renovations, additions, and new builds with clear communication and dependable delivery. Serving Middle Tennessee.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="how-we-work.html">How We Work</a></li>
+        <li><a href="our-values.html">Our Values</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:6152788657">615.278.8657</a></li>
+        <li><a href="mailto:contact@52-build.com">contact@52-build.com</a></li>
+        <li><a href="https://app.52-build.com" target="_blank">52 Build App</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 52 Build. All rights reserved.</span>
+    <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a></span>
+  </div>
+</footer>
+
+<a href="https://wa.me/16152788657?text=Hi%2C%20I%27m%20interested%20in%20learning%20more%20about%2052%20Build." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<div class="mobile-app-bar">
+  <a href="https://app.52-build.com" target="_blank">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    Open the 52 Build App
+  </a>
+</div>
+
+</body>
+</html>
