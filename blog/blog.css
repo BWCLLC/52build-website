@@ -229,6 +229,8 @@ a:hover { color: var(--gold); }
   display: flex; justify-content: space-between; align-items: center;
   font-size: 0.75rem; color: var(--text-muted);
 }
+.footer-bottom a { color: var(--text-muted); text-decoration: underline; white-space: nowrap; }
+.footer-bottom a:hover { color: #fff; }
 
 /* ─── MOBILE ─── */
 @media (max-width: 768px) {

@@ -181,3 +181,32 @@ body.light a[href*="wa.me"] { box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important
 
 /* Mobile app bar */
 body.light .mobile-app-bar { background: var(--teal); }
+
+/* Optional SMS consent on the contact form */
+.form-group label.sms-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 0;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.5;
+  color: var(--gray-300);
+}
+.form-group label.sms-consent input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  padding: 0;
+  flex-shrink: 0;
+  accent-color: var(--teal);
+}
+.form-group label.sms-consent a {
+  color: var(--teal);
+  text-decoration: underline;
+}
+.footer-bottom a { color: var(--gray-400); text-decoration: underline; white-space: nowrap; }
+.footer-bottom a:hover { color: var(--white); }
